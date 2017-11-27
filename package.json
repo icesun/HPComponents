@@ -1,0 +1,74 @@
+{
+  "name": "react-rest-jwt-base",
+  "version": "0.0.1",
+  "description": "ReactJS + RESTful + JWT PHP API",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack -p --config ./webpack-production.config.js"
+  },
+  "keywords": [
+    "react",
+    "restful",
+    "jwt",
+    "js",
+    "php",
+    "api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UQ-UQx/react-rest-jwt-base.git"
+  },
+  "author": "Sai Sun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UQ-UQx/react-rest-jwt-base.git/issues"
+  },
+  "homepage": "https://github.com/UQ-UQx/react-rest-jwt-base.git#readme",
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "browser-sync": "^2.18.8",
+    "browser-sync-webpack-plugin": "^1.1.4",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^1.1.5",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.5.0",
+    "path": "^0.12.7",
+    "sass-loader": "^6.0.3",
+    "strip-loader": "^0.1.2",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.6.0",
+    "webpack-bundle-analyzer": "^2.3.1"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "bootstrap": "^3.3.7",
+    "lodash": "^4.17.4",
+    "polished": "^1.8.0",
+    "prop-types": "~15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-fa": "^5.0.0",
+    "styled-components": "^2.2.1",
+    "uuid": "^3.0.1",
+    "react-redux": "4.3.0",
+    "react-router-dom": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-form": "^6.6.3",
+    "redux-promise": "^0.5.3"
+  },
+  "private": true
+}
