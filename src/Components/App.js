@@ -31,7 +31,7 @@ export default class App extends React.Component {
         console.log('testJWT clicked.');
         axios.get('../public/api/action_api.php', {
             params: {
-                action: 'testJWT',
+                action: 'getLtiInfo',
                 jwt_token: $JWT_TOKEN,
             }
         })

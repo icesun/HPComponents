@@ -7,13 +7,14 @@ class MyApi
 	 * @var object
 	 */
 	private $request;
-	private $db;
 	private $config;
+	private $lti_jwt;
 
 	public function __construct($config)
 	{
 		$this->config = $config;
 		$this->_processRequest();
+		$this->lti_jwt = array();
 	}
 
 
@@ -22,18 +23,19 @@ class MyApi
 		//For $this->settings['method'] == 'GET', 'POST', 'PUT', 'DELETE'
 		//error_log('jwt' . json_encode($this->settings['get']['jwt_token']));
 
-		error_log('verify_LTI_JWT is called.' . json_encode($_REQUEST['jwt_token']));
+		error_log('verify_LTI_JWT is called..' . json_encode($_REQUEST['jwt_token']));
 		$result = false;
 
 		$jwt_token = isset($_REQUEST['jwt_token'])?$_REQUEST['jwt_token']:'';
 
 		try {
-			$jwt_decode = JWT::decode($jwt_token, $this->config['jwt_key']);
-			error_log('jwt_token' . json_encode($jwt_decode));
+			$lti_jwt = JWT::decode($jwt_token, $this->config['jwt_key']);
+			$this->lti_jwt = $lti_jwt;
 			$result = true;
 
 		}
 		catch(UnexpectedValueException $e) {
+			$this->lti_jwt = false;
 			error_log('UnexpectedValueException: ' . $e->getMessage());
 		}
 
@@ -51,8 +53,8 @@ class MyApi
 	 */
 	private function _processRequest()
 	{
-		error_log('server' . json_encode($_SERVER));
-		error_log('request' . json_encode($_REQUEST));
+		//error_log('server' . json_encode($_SERVER));
+		//error_log('request' . json_encode($_REQUEST));
 
 
 		/* Authenticator */
@@ -63,17 +65,16 @@ class MyApi
 				$auth_result = $this->$auth();
 
 				if(!$auth_result) {
-					header("HTTP/1.1 401 Unauthorized");
+					$this->reply("Unauthorized", 401);
 					exit();					
 				}
 
 			}
 			else {
-				header("HTTP/1.1 404 The authenticator function not found.");
+				$this->reply("The authenticator function is not found.", 404);
 				exit();
 			}
 		}
-
 
 		// get the request
 		if (!empty($_REQUEST)) {
@@ -84,44 +85,28 @@ class MyApi
 			$this->request = json_decode(file_get_contents('php://input'));
 		}
 
+
 		//check if an action is sent through
 		if(!isset($this->request->action)){
-			//if no action is provided then reply with a 400 error with message
 			$this->reply("No Action Provided", 400);
-			//kill script
-			exit();
-			//$this->reply('Test');
-		}
-
-		/*
-		//check if method for the action exists
-		if(!method_exists($this, $this->request->action)){
-			//if method doesn't exist, send 400 code and message with reply'
-			$this->reply("Action method not found",400);
-			//kill script
 			exit();
 		}
-        */
-
-		switch($this->request->action){
-			case "hello":
-				$this->hello($this->request->data);
-				break;
-			case "testJWT":
-				$this->reply("testJWT");
-				break;
-			default:
-				$this->reply("action switch failed",400);
-			break;
+		else if(!method_exists($this, $this->request->action)){
+			$this->reply("The action function is not found.", 404);
+			exit();
 		}
-
-
+		else {
+			$action = $this->request->action;
+			$this->$action();
+		}
 
 	}
 
-    public function hello(){
-		$data = json_decode($this->request->data);
-		$this->reply("Hello ".$data->name.", I'm PHP :)");
+	public function getLtiInfo() {
+		//error_log('getLtiInfo is called..');
+		$data = json_encode($this->lti_jwt);
+		$this->reply('LTI Info' . $data);
+
 	}
 
 
