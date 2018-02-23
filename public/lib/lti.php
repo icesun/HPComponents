@@ -140,20 +140,35 @@ class Lti {
 		return $this->ltivars;
 	}
 
+	function course_id() {
+		if(isset($this->ltivars["context_id"])) {
+			return $this->ltivars["context_id"];
+		}
+		return 'Unknown context id (course id)';
+	}
+
+	function lti_consumer_key(){
+		if(isset($this->ltivars["oauth_consumer_key"])) {
+			return $this->ltivars["oauth_consumer_key"];
+		}
+		return 'Unknown oauth consumer key';
+	}
+
+
 	function usedummydata() {
 		$this->ltivars = array(
 
 			'custom_component_display_name' => 'LTI Consumer',
 			'lti_version' => 'LTI-1p0',
 			'oauth_nonce' => '106095563246583917761495495665',
-			'resource_link_id' => 'courses.edx.org-aa766098b5a94a738b54e89caf3a8973',
-			'context_id' => 'course-v1:UQx+COURSECODEx+2T2017',
+			'resource_link_id' => 'courses.edx.org-aa766098b5a94a738b54e89caf3a8972_4_1',
+			'context_id' => 'course-v1:UQx+COURSECODE_4x+2T2017',
 			'oauth_signature_method' => 'HMAC-SHA1',
 			'oauth_version' => '1.0',
 			'oauth_signature' => 'iFUDZD4AYMhKKgHLf/LeXpNZcSA=',
 			'lti_message_type' => 'basic-lti-launch-request',
 			'launch_presentation_return_url' => '',
-			'user_id' => 'f770caedc6d860f087297810891526d7user2',
+			'user_id' => 'f770caedc6d860f087297810891526d7_4_u18',
 			'roles' => 'Instructor',
 			'oauth_consumer_key' => 'uqx',
 			'lis_result_sourcedid' => 'course-v1%3AUQx%2BCOURSECODEx%2B2T2017:courses.edx.org-aa766098b5a94a738b54e89caf3a8973:f770caedc6d860f087297810891526d7',
@@ -162,6 +177,7 @@ class Lti {
 			'oauth_callback' => 'about:blank',
 			'custom_variable_by_user_bool'=>'true',
 			'custom_variable_by_user_string'=>"woo hoo i have LTI support"
+			
 		);
 	}
 

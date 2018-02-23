@@ -7,12 +7,14 @@ class MyApi
 	 * @var object
 	 */
 	private $request;
+	private $db;
 	private $config;
 	private $lti_jwt;
 
-	public function __construct($config)
+	public function __construct($database, $config)
 	{
 		$this->config = $config;
+		$this->db = $database;
 		$this->_processRequest();
 		$this->lti_jwt = array();
 	}
@@ -144,5 +146,15 @@ class MyApi
 
 require_once('../lib/jwt_helper.php');
 require_once('../config.php');
-$MyApi = new MyApi($config);
+
+if(isset($config['use_db']) && $config['use_db']) {
+	require_once('./lib/db.php');
+	Db::config( 'driver',   'mysql' );
+	Db::config( 'host',     $config['db_meta']['hostname'] );
+	Db::config( 'database', $config['db_meta']['database'] );
+	Db::config( 'user',     $config['db_meta']['username'] );
+	Db::config( 'password', $config['db_meta']['password'] );
+}
+$db = null; //Db::instance(); //uncomment and enter db details in config to use database
+$MyApi = new MyApi($db, $config);
 

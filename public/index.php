@@ -11,14 +11,6 @@
             require_once('./lib/jwt_helper.php');
 
         	$lti = new Lti($config,true);
-        	if(isset($config['use_db']) && $config['use_db']) {
-        		require_once('./lib/db.php');
-        		Db::config( 'driver',   'mysql' );
-        		Db::config( 'host',     $config['db']['hostname'] );
-        		Db::config( 'database', $config['db']['dbname'] );
-        		Db::config( 'user',     $config['db']['username'] );
-        		Db::config( 'password', $config['db']['password'] );
-        	}
 
             if(!$lti->is_valid()) {
                 echo("LTI Not Valid");
