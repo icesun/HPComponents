@@ -6,7 +6,7 @@ import App from "./Components/App"
 
 const appContainer = document.getElementById('app');
 let state = {
-    input_val:"Welcome to ReactJS + RESTful + JWT  API",
+    input_val:"Cultural Workbook Tool",
     api_message:"",
 }
 ReactDOM.render(<BrowserRouter><App appState={state}/></BrowserRouter>, appContainer);
