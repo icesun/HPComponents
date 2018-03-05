@@ -18,9 +18,9 @@ export default class PdfTextArea extends React.Component {
 
 
      return(
-        <div>
-            <label>ABC</label><span>question?</span>
-            <textarea></textarea>
+        <div className={this.props.taClassName}>
+            <label>{this.props.questionLabel}</label><span>{this.props.questionText}</span>
+            <div><textarea></textarea></div>
         </div>
      ); 
 

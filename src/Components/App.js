@@ -8,7 +8,7 @@ import PdfTable from "./PdfTable"
 
 const components = [
     {
-        id: 1,
+        id: 'c1',
         type: 'PdfTextArea',
         classes: ['pdftextarea', 'ta_medium'],
         extra_data: {
@@ -17,10 +17,10 @@ const components = [
         }
     },
     {
-        id: 2,
+        id: 'c2',
         type: 'PdfTable',
         classes: ['pdftable'],
-        meta: [
+        tr_meta: [
             [{text: 'Level', classes: 'th-noborder'}, 
              {text: 'What’s happening now?', classes: 'th-noborder'},
              {text: 'What could you do?', classes: 'th-noborder'}],
@@ -48,7 +48,7 @@ const components = [
         ],
     },
     {
-        id: 3,
+        id: 'c3',
         type: 'PdfTextArea',
         classes: ['pdftextarea', 'ta_medium'],
         extra_data: {
@@ -101,7 +101,36 @@ export default class App extends React.Component {
     }
 
     rendercomponents() {
-        
+
+        let renderComponents = components.map(item => {
+            console.log('comp', item);
+
+            switch(item.type) {
+                case 'PdfTextArea':
+                    return this.renderPdfTextArea(item);
+                case 'PdfTable':
+                    return this.renderPdfTable(item);
+            }
+        });
+
+        return renderComponents;
+
+    }
+
+    renderPdfTextArea(meta) {
+        return (
+            <PdfTextArea  key={meta.id}
+                 taClassName={meta.classes}
+                 questionLabel = {meta.extra_data.label}
+                 questionText = {meta.extra_data.question}
+            />
+        );
+    }
+
+    renderPdfTable(meta) {
+        return (
+            <PdfTable key={meta.id} />
+        );
     }
 
 
@@ -109,11 +138,16 @@ export default class App extends React.Component {
         console.log('lti_var', $LTI_VARS);
         console.log('jwt_token', $JWT_TOKEN);
 
+        var renderComponents = this.rendercomponents();
+        console.log('aaa', renderComponents);
+
         return (
           <div className="container">
             <h1>{this.state.input_val}</h1>
             <h2>{this.state.api_message}</h2>
-                <PdfTextArea />    
+            <div>
+                {renderComponents} 
+            </div>
           </div>
         );
     }
