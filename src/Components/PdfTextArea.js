@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../StyleSheets/PdfTextArea.scss"
 
 export default class PdfTextArea extends React.Component {
 
@@ -18,9 +18,9 @@ export default class PdfTextArea extends React.Component {
 
 
      return(
-        <div className={this.props.taClassName}>
+        <div>
             <label>{this.props.questionLabel}</label><span>{this.props.questionText}</span>
-            <div><textarea></textarea></div>
+            <div><textarea  className={this.props.taClassName}></textarea></div>
         </div>
      ); 
 
