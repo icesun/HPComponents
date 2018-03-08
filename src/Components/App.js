@@ -19,7 +19,7 @@ const components = [
     {
         id: 'c2',
         type: 'PdfTable',
-        classes: "table table-border pdftable",
+        classes: "table pdftable",
         tr_arr: [
             {
                 classes: '',
@@ -32,50 +32,50 @@ const components = [
                 classes: '',
                 td_arr: [
                     {text: 'Leadership commitment(What’s modelled)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue'},
-                    {text: '', classes: 'td-blue'}]
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
             },
             {
                 classes: '',
                 td_arr: [
                     {text: 'Values & behaviours(What’s expected)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue'},
-                    {text: '', classes: 'td-blue'}]
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
             },
             {
                 classes: '',
                 td_arr: [
                     {text: 'Workforce capabilities(Who’s equipped)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue'},
-                    {text: '', classes: 'td-blue'}],
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
             },
             {
                 classes: '',
                 td_arr: [
                     {text: 'Recognition & consequences(What’s reinforced)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue'},
-                    {text: '', classes: 'td-blue'}],
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
             },
             {
                 classes: '',
                 td_arr: [
                     {text: 'Practices & procedures(What’s habitual)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue'},
-                    {text: '', classes: 'td-blue'}],
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}],
             },
             {
                 classes: '',
                 td_arr: [
                     {text: 'Underpinning structures(What enables)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue'},
-                    {text: '', classes: 'td-blue'}]
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
             },
             {
                 classes: '',
                 td_arr: [
                     {text: 'Monitor & evolve(What’s measured)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue'},
-                    {text: '', classes: 'td-blue'}]
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
+                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
             },
         ],
     },

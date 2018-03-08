@@ -23,7 +23,15 @@ export default class PdfTable extends React.Component {
         let tdArrays = tr.td_arr.map(td => {
           console.log('td', td);
 
+          /*
+          if(td.text == '') {
+
+          }
           return (<td key={'td' + uuid.v4()} className={td.classes}>{td.text}</td>);
+          */
+
+          return this.createTd(td);
+
 
         });
 
@@ -34,6 +42,32 @@ export default class PdfTable extends React.Component {
       return trArrays;
 
 
+   }
+
+   createTd(td) {
+
+
+    if(td.text != '') {
+      return (<td key={'td' + uuid.v4()} className={td.classes}>{td.text}</td>);
+    }
+
+    let embed_component = '';
+    switch(td.embed) {
+      case 'textarea':
+        embed_component = this.embed_textarea();
+        break;
+
+      default:
+        embed_component = td.embed;
+    }
+
+    return (<td key={'td' + uuid.v4()} className={td.classes}>{embed_component}</td>);
+   }
+
+   embed_textarea() {
+     return (
+       <textarea className="form-control embed_component"></textarea>
+     )
    }
 
    render() {
