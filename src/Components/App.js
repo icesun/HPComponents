@@ -12,21 +12,26 @@ export default class App extends React.Component {
     constructor(props){
         super(props);
 
+        //this.state = this.initStateInput(components, props.dbAttempt);
+        this.state = {};
+        props.dbAttempt.attempt_json ? this.state.storedAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.storedAttempt = {};
+        this.state.inputAttempt = {};
 
-        this.state = props.appState;
-
+        console.log('state', this.state);
 
         this.testJWTClick = this.testJWTClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
 
-/*    
-    initStateInput() {
-        console.log('components', components);
+    
+    initStateInput(components, attempt) {
+        console.log('params', components, attempt);
+
+        // todo: create this.state.
 
     }
-*/
+
 
     componentWillMount(){
         console.log("Layout component will mount")
@@ -40,7 +45,25 @@ export default class App extends React.Component {
     }
 
     handleChange(event) {
-        console.log('handle changes...', event.target, event.type, event);
+        console.log('handle changes...', event.target, event.target.value, event.target.getAttribute('data-key'));
+
+        let target_key = event.target.getAttribute('data-key');
+        let target_value = event.target.value;
+        //this.state.inputAttempt[target_key] = event.target.value;
+        /*
+        this.setState({inputAttempt:
+            Object.assign 
+        });
+        */
+       
+        this.setState((prevState, target_key, target_value) => {
+            return {inputAttempt: Object.assign({}, prevState.inputAttempt, {target_key: target_value})};
+
+        });
+
+        console.log('state', this.state);
+
+
     }
 
     testJWTClick(event) {
@@ -77,12 +100,27 @@ export default class App extends React.Component {
     }
 
     renderPdfTextArea(meta) {
+        //this.state.storedAttempt
+        //let text = '';
+
+        /*  
+        if(this.state.storedAttempt[meta.id]) {
+            //text = this.state.storedAttempt[meta.id];
+            this.state.inputAttempt[meta.id] = this.state.storedAttempt[meta.id];
+        }
+        else {
+            this.state.inputAttempt[meta.id] = '';
+        }
+        */
+
         return (
             <PdfTextArea  key={meta.id}
                  taClassName={meta.classes}
                  questionLabel = {meta.extra_data.label}
                  questionText = {meta.extra_data.question}
                  handleChange = {this.handleChange}
+                 dataKey = {meta.id}
+                 data = {this.state.inputAttempt}
             />
         );
     }
@@ -98,8 +136,8 @@ export default class App extends React.Component {
 
 
     render(){
-        console.log('lti_var', $LTI_VARS);
-        console.log('jwt_token', $JWT_TOKEN);
+        //console.log('lti_var', $LTI_VARS);
+        //console.log('jwt_token', $JWT_TOKEN);
 
         var renderComponents = this.rendercomponents();
         console.log('aaa', renderComponents);

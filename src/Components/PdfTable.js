@@ -21,7 +21,7 @@ export default class PdfTable extends React.Component {
    createTrArrays() {
       let trArrays = this.props.trMeta.map(tr => {
         let tdArrays = tr.td_arr.map(td => {
-          console.log('td', td);
+          //console.log('td', td);
 
           /*
           if(td.text == '') {

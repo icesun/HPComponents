@@ -16,7 +16,7 @@ const client = axios.create({
     responseType: 'json'
 });
 
-console.log('global', $LTI_VARS, $JWT_TOKEN);
+//console.log('global', $LTI_VARS, $JWT_TOKEN);
 
 let condition1 = 'course_id,eq,' + $LTI_VARS['context_id'];
 let condition2 = 'student_id,eq,' + $LTI_VARS['user_id'];
