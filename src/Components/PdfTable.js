@@ -76,7 +76,7 @@ export default class PdfTable extends React.Component {
     var trArrays = this.createTrArrays();
 
      return(
-        <div className='table-responsive'>
+        <div className='form-group table-responsive'>
           <table className={this.props.tClassName}>
             <tbody>
               {trArrays}

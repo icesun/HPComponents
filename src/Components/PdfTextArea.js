@@ -18,9 +18,9 @@ export default class PdfTextArea extends React.Component {
 
 
      return(
-        <div>
+        <div class="form-group">
             <label>{this.props.questionLabel}</label><span>{this.props.questionText}</span>
-            <div><textarea  className={this.props.taClassName}></textarea></div>
+            <div><textarea  className={this.props.taClassName} onChange={this.props.handleChange}></textarea></div>
         </div>
      ); 
 

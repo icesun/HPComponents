@@ -4,107 +4,30 @@ import axios from "axios"
 import PdfTextArea from "./PdfTextArea"
 import PdfTable from "./PdfTable"
 
+import { title, api_msg, components } from "./ComponentData"
 
 
-const components = [
-    {
-        id: 'c1',
-        type: 'PdfTextArea',
-        classes: "form-control pdftextarea ta_medium",
-        extra_data: {
-            label: 'What is the problem or goal?',
-            question: 'Current situation: What is happening now; what is problematic?  Desired future: What is the business need; What does the context/strategy call for?',
-        }
-    },
-    {
-        id: 'c2',
-        type: 'PdfTable',
-        classes: "table pdftable",
-        tr_arr: [
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Lever', classes: 'th-black'},
-                    {text: 'What’s happening now?', classes: 'td-black'},
-                    {text: 'What could you do?', classes: 'td-black'}]
-            },
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Leadership commitment(What’s modelled)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
-            },
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Values & behaviours(What’s expected)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
-            },
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Workforce capabilities(Who’s equipped)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
-            },
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Recognition & consequences(What’s reinforced)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
-            },
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Practices & procedures(What’s habitual)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}],
-            },
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Underpinning structures(What enables)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
-            },
-            {
-                classes: '',
-                td_arr: [
-                    {text: 'Monitor & evolve(What’s measured)', classes: 'th-blue'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'},
-                    {text: '', classes: 'td-blue td-embed', embed: 'textarea'}]
-            },
-        ],
-    },
-    {
-        id: 'c3',
-        type: 'PdfTextArea',
-        classes: "form-control pdftextarea ta_medium",
-        extra_data: {
-            label: 'Action you can take?',
-            question: '(Clarify business need; Further investigation to identify levers in play; Explore areas where levers are having different impact; Other…)',
-        }
-        
-    }
-
-];
 
 export default class App extends React.Component {
     constructor(props){
         super(props);
 
-        let defaultState = {
-            input_val:"",
-            api_message:""
-        }
-        props.appState ? this.state = props.appState : this.state = defaultState
+
+        this.state = props.appState;
 
 
         this.testJWTClick = this.testJWTClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
+
+
+/*    
+    initStateInput() {
+        console.log('components', components);
+
+    }
+*/
+
     componentWillMount(){
         console.log("Layout component will mount")
 
@@ -114,6 +37,10 @@ export default class App extends React.Component {
     }
     componentWillUnmount(){
         console.log("Layout component will unmount")
+    }
+
+    handleChange(event) {
+        console.log('handle changes...', event.target, event.type, event);
     }
 
     testJWTClick(event) {
@@ -155,6 +82,7 @@ export default class App extends React.Component {
                  taClassName={meta.classes}
                  questionLabel = {meta.extra_data.label}
                  questionText = {meta.extra_data.question}
+                 handleChange = {this.handleChange}
             />
         );
     }
@@ -178,8 +106,8 @@ export default class App extends React.Component {
 
         return (
           <div className="container">
-            <h1>{this.state.input_val}</h1>
-            <h2>{this.state.api_message}</h2>
+            <h1>{title}</h1>
+            <h2>{api_msg}</h2>
             <div>
                 {renderComponents} 
             </div>
