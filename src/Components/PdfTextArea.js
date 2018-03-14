@@ -15,17 +15,19 @@ export default class PdfTextArea extends React.Component {
    }
 
    render() {
+
+//    let value = '';
+    let dataKey = this.props.dataKey;
     let value = '';
-    console.log('ta props', this.props);
-    if(this.props.data[this.props.dataKey]) {
-       value = this.props.data[this.props.dataKey];
-       console.log('abc', text);
-     }
+    if(this.props.data[dataKey]) {
+      value = this.props.data[dataKey];
+    }
+    console.log('ta props', this.props, dataKey, value);
 
      return(
         <div class="form-group">
             <label>{this.props.questionLabel}</label><span>{this.props.questionText}</span>
-            <div><textarea className={this.props.taClassName} onChange={this.props.handleChange} value={value} data-key={this.props.dataKey}/></div>
+            <div><textarea className={this.props.taClassName} onChange={this.props.handleChange} value={value} data-key={dataKey}/></div>
         </div>
      ); 
 

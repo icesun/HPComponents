@@ -15,7 +15,7 @@ export default class App extends React.Component {
         //this.state = this.initStateInput(components, props.dbAttempt);
         this.state = {};
         props.dbAttempt.attempt_json ? this.state.storedAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.storedAttempt = {};
-        this.state.inputAttempt = {};
+        this.state.inputAttempt = this.state.storedAttempt;
 
         console.log('state', this.state);
 
@@ -27,9 +27,6 @@ export default class App extends React.Component {
     
     initStateInput(components, attempt) {
         console.log('params', components, attempt);
-
-        // todo: create this.state.
-
     }
 
 
@@ -45,26 +42,43 @@ export default class App extends React.Component {
     }
 
     handleChange(event) {
-        console.log('handle changes...', event.target, event.target.value, event.target.getAttribute('data-key'));
+        console.log('handle changes...', event.target, event.target.value, event.target.type, event.target.getAttribute('data-key'));
 
+        let newInput = {};
+
+        switch(event.target.type) {
+            case 'textarea':
+                newInput = this.textareaChanged(event.target.getAttribute('data-key'), event.target.value);
+            break;
+
+        }
+
+        this.setState((prevState) => {
+            return {inputAttempt: Object.assign({}, prevState.inputAttempt, newInput)};
+        });
+
+
+        /*
         let target_key = event.target.getAttribute('data-key');
         let target_value = event.target.value;
-        //this.state.inputAttempt[target_key] = event.target.value;
-        /*
-        this.setState({inputAttempt:
-            Object.assign 
+
+        this.setState((prevState) => {
+            let newInput = {}
+            newInput[target_key] = target_value;
+            console.log('target', target_key, target_value, newInput);
+
+            return {inputAttempt: Object.assign({}, prevState.inputAttempt, newInput)};
+
         });
         */
-       
-        this.setState((prevState, target_key, target_value) => {
-            return {inputAttempt: Object.assign({}, prevState.inputAttempt, {target_key: target_value})};
-
-        });
-
-        console.log('state', this.state);
-
-
     }
+
+    textareaChanged(key, value) {
+        let newInput = {};
+        newInput[key] = value;
+        return newInput;
+    }
+
 
     testJWTClick(event) {
         console.log('testJWT clicked.');
@@ -100,18 +114,6 @@ export default class App extends React.Component {
     }
 
     renderPdfTextArea(meta) {
-        //this.state.storedAttempt
-        //let text = '';
-
-        /*  
-        if(this.state.storedAttempt[meta.id]) {
-            //text = this.state.storedAttempt[meta.id];
-            this.state.inputAttempt[meta.id] = this.state.storedAttempt[meta.id];
-        }
-        else {
-            this.state.inputAttempt[meta.id] = '';
-        }
-        */
 
         return (
             <PdfTextArea  key={meta.id}
