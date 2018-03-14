@@ -116,6 +116,17 @@ export default class App extends React.Component {
     renderPdfTextArea(meta) {
 
         return (
+            <div class="form-group">
+                <PdfTextArea  key={meta.id}
+                    meta = {meta}
+                    handleChange = {this.handleChange}
+                    data = {this.state.inputAttempt}
+                />
+            </div>
+        );
+
+/*
+        return (
             <PdfTextArea  key={meta.id}
                  taClassName={meta.classes}
                  questionLabel = {meta.extra_data.label}
@@ -125,6 +136,7 @@ export default class App extends React.Component {
                  data = {this.state.inputAttempt}
             />
         );
+*/
     }
 
     renderPdfTable(meta) {

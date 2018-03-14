@@ -2,12 +2,14 @@ export const components = [
     {
         id: 'c1',
         type: 'PdfTextArea',
-        input: 'YES',
+        //input: 'YES',
         classes: "form-control pdftextarea ta_medium",
-        extra_data: {
+        
+        extra: {
             label: 'What is the problem or goal?',
             question: 'Current situation: What is happening now; what is problematic?  Desired future: What is the business need; What does the context/strategy call for?',
         }
+        
     },
     {
         id: 'c2',
@@ -18,17 +20,17 @@ export const components = [
                 id: 'c2_1',
                 classes: '',
                 td_arr: [
-                    {id: 'c2_1_1', text: 'Lever', classes: 'th-black'},
-                    {id: 'c2_1_2', text: 'What’s happening now?', classes: 'td-black'},
-                    {id: 'c2_1_3', text: 'What could you do?', classes: 'td-black'}]
+                    {id: 'c2_1_1', type: 'NormalTD', text: 'Lever', classes: 'th-black'},
+                    {id: 'c2_1_2', type: 'NormalTD', text: 'What’s happening now?', classes: 'td-black'},
+                    {id: 'c2_1_3', type: 'NormalTD', text: 'What could you do?', classes: 'td-black'}]
             },
             {
                 id: 'c2_2',
                 classes: '',
                 td_arr: [
-                    {id: 'c2_2_1', text: 'Leadership commitment(What’s modelled)', classes: 'th-blue'},
-                    {id: 'c2_2_2', text: '', classes: 'td-blue td-embed', embed: 'textarea', input: 'YES'},
-                    {id: 'c2_2_3', text: '', classes: 'td-blue td-embed', embed: 'textarea', input: 'YES'}]
+                    {id: 'c2_2_1', type: 'NormalTD', text: 'Leadership commitment(What’s modelled)', classes: 'th-blue'},
+                    {id: 'c2_2_2', type: 'PdfTextArea', classes: 'td-blue td-embed'},
+                    {id: 'c2_2_3', type: 'PdfTextArea', classes: 'td-blue td-embed'}]
             },
             {
                 id: 'c2_3',
@@ -83,9 +85,9 @@ export const components = [
     {
         id: 'c3',
         type: 'PdfTextArea',
-        input: 'YES',
+        //input: 'YES',
         classes: "form-control pdftextarea ta_medium",
-        extra_data: {
+        extra: {
             label: 'Action you can take?',
             question: '(Clarify business need; Further investigation to identify levers in play; Explore areas where levers are having different impact; Other…)',
         }
