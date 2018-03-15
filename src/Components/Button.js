@@ -15,30 +15,16 @@ export default class Button extends React.Component {
    }
 
    render() {
-    //console.log('ta', this.props);
+    console.log('button', this.props);
+
+    var meta = this.props.meta;
 
 
     return(
-      <div className={meta.div_classes}>
-      </div>
+      <button className={meta.classes} onClick={this.props.handleClick}>{meta.value}</button>
     );
 
-/*    
-//    let value = '';
-    let dataKey = this.props.dataKey;
-    let value = '';
-    if(this.props.data[dataKey]) {
-      value = this.props.data[dataKey];
-    }
-    console.log('ta props', this.props, dataKey, value);
 
-    <div><textarea className={meta.classes} onChange={this.props.handleChange} value={data[meta.id]} data-key={meta.id}/></div>
-      
-     return(
-            <label>{this.props.questionLabel}</label><span>{this.props.questionText}</span>
-            <div><textarea className={this.props.taClassName} onChange={this.props.handleChange} value={value} data-key={dataKey}/></div>
-     ); 
-*/
 
    }
 

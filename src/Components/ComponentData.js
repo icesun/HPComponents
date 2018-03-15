@@ -140,7 +140,6 @@ export const components = [
         }
         
     },
-    /*
     {
         id: 'c4',
         type: 'Button',
@@ -160,6 +159,5 @@ export const components = [
         }
 
     }
-    */
 
 ];

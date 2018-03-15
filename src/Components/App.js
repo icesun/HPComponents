@@ -22,7 +22,7 @@ export default class App extends React.Component {
 
         this.testJWTClick = this.testJWTClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        //this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
 
@@ -75,11 +75,12 @@ export default class App extends React.Component {
         */
     }
 
-    /*
+    
     handleClick(event) {
+        console.log('clicked');
 
     }
-    */
+    
 
     textareaChanged(key, value) {
         let newInput = {};
@@ -114,9 +115,9 @@ export default class App extends React.Component {
                     return this.renderPdfTextArea(item);
                 case 'PdfTable':
                     return this.renderPdfTable(item);
-                //case 'Button':
-                    //return {};
-                    //return this.renderButton(item);
+                case 'Button':
+                    //return '';
+                    return this.renderButton(item);
             }
         });
 
@@ -128,7 +129,7 @@ export default class App extends React.Component {
         console.log('here', meta);
 
         return (
-            <WorkButton key={meta.id}
+            <Button key={meta.id}
                 meta = {meta}
                 handleClick = {this.handleClick}
             />
