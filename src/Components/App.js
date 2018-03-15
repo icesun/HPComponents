@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 
-import PdfTextArea from "./PdfTextArea"
+import { PdfTextArea } from "./PdfTextArea"
 import PdfTable from "./PdfTable"
 
 import { title, api_msg, components } from "./ComponentData"
@@ -116,34 +116,23 @@ export default class App extends React.Component {
     renderPdfTextArea(meta) {
 
         return (
-            <div class="form-group">
-                <PdfTextArea  key={meta.id}
-                    meta = {meta}
-                    handleChange = {this.handleChange}
-                    data = {this.state.inputAttempt}
-                />
-            </div>
-        );
-
-/*
-        return (
             <PdfTextArea  key={meta.id}
-                 taClassName={meta.classes}
-                 questionLabel = {meta.extra_data.label}
-                 questionText = {meta.extra_data.question}
-                 handleChange = {this.handleChange}
-                 dataKey = {meta.id}
-                 data = {this.state.inputAttempt}
+                meta = {meta}
+                handleChange = {this.handleChange}
+                data = {this.state.inputAttempt}
             />
         );
-*/
     }
+
 
     renderPdfTable(meta) {
         return (
             <PdfTable key={meta.id} 
-                tClassName = {meta.classes}
-                trMeta = {meta.tr_arr}
+                //tClassName = {meta.classes}
+                //trMeta = {meta.tr_arr}
+                meta = {meta}
+                handleChange = {this.handleChange}
+                data = {this.state.inputAttempt}
             />
         );
     }

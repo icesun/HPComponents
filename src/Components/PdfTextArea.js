@@ -1,7 +1,7 @@
 import React from "react"
-import "../StyleSheets/PdfTextArea.scss"
 
-export default class PdfTextArea extends React.Component {
+
+export class PdfTextArea extends React.Component {
 
     
    constructor(props) {
@@ -15,13 +15,12 @@ export default class PdfTextArea extends React.Component {
    }
 
    render() {
-    console.log('ta', this.props);
+    //console.log('ta', this.props);
 
     var extra = [];
     var meta = this.props.meta;
     var data = this.props.data;
     if(meta.extra) {
-
       if(meta.extra.label) {
         extra.push(<label>{meta.extra.label}</label>);
       }
@@ -31,10 +30,8 @@ export default class PdfTextArea extends React.Component {
       }
     }
 
-    
-
     return(
-      <div>
+      <div className={meta.div_classes}>
         <div>{extra}</div>
         <div><textarea className={meta.classes} onChange={this.props.handleChange} value={data[meta.id]} data-key={meta.id}/></div>
       </div>

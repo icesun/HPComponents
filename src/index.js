@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 
 import App from "./Components/App"
-//import {title, api_msg, components } from "./Components/ComponentData.js"
 
 const appContainer = document.getElementById('app');
 const tableName = 'Attempts';

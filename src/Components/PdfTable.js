@@ -1,15 +1,17 @@
 import React from "react"
 import uuid from "uuid"
 
-import "../StyleSheets/PdfTable.scss"
-
+import { PdfTextArea } from "./PdfTextArea"
 
 
 export default class PdfTable extends React.Component {
 
     
    constructor(props) {
-        super(props)
+        super(props);
+
+        this.createTR = this.createTR.bind(this);
+        this.createTD = this.createTD.bind(this);
    }
    componentWillMount(){
    }
@@ -18,73 +20,58 @@ export default class PdfTable extends React.Component {
    componentWillUnmount(){
    }
 
-   createTrArrays() {
-      let trArrays = this.props.trMeta.map(tr => {
-        let tdArrays = tr.td_arr.map(td => {
-          //console.log('td', td);
-
-          /*
-          if(td.text == '') {
-
-          }
-          return (<td key={'td' + uuid.v4()} className={td.classes}>{td.text}</td>);
-          */
-
-          return this.createTd(td);
 
 
-        });
 
-        return (<tr key={'td' + uuid.v4()} className={tr.classes}>{tdArrays}</tr>);
+  createTD(meta) {
+    var tdContent = '';
 
-      });
+    switch(meta.type) {
+      case 'NormalTD':
+        tdContent = meta.text;
+      break;
 
-      return trArrays;
+      case 'PdfTextArea':
+        tdContent = (
+          <PdfTextArea key={meta.id}
+            meta = {meta}
+            handleChange = {this.props.handleChange}
+            data = {this.props.data}
+          />
+        );
+      break;
 
-
-   }
-
-   createTd(td) {
-
-
-    if(td.text != '') {
-      return (<td key={'td' + uuid.v4()} className={td.classes}>{td.text}</td>);
     }
 
-    let embed_component = '';
-    switch(td.embed) {
-      case 'textarea':
-        embed_component = this.embed_textarea();
-        break;
 
-      default:
-        embed_component = td.embed;
-    }
+    return (<td key={meta.id} classes={meta.classes}>{tdContent}</td>);
+  }
+  
 
-    return (<td key={'td' + uuid.v4()} className={td.classes}>{embed_component}</td>);
+  createTR(meta) { 
+    var tdArray = meta.td_arr.map(this.createTD);
+    
+    return (<tr key={meta.id} className={meta.classes}>{tdArray}</tr>);  
    }
 
-   embed_textarea() {
-     return (
-       <textarea className="form-control embed_component"></textarea>
-     )
-   }
 
    render() {
-    console.log('props', this.props);
+    console.log('table props', this.props);
 
-    var trArrays = this.createTrArrays();
+    var meta = this.props.meta;
+    //var data = this.props.data;
+     
+    var trArray = meta.tr_arr.map(this.createTR);
 
      return(
-        <div className='form-group table-responsive'>
-          <table className={this.props.tClassName}>
+        <div className={meta.div_classes}>
+          <table className={meta.classes}>
             <tbody>
-              {trArrays}
+              {trArray}
             </tbody>
           </table>
         </div>
      ); 
-
    }
 
 }
