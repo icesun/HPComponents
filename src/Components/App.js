@@ -1,8 +1,9 @@
 import React from "react"
 import axios from "axios"
 
-import { PdfTextArea } from "./PdfTextArea"
-import PdfTable from "./PdfTable"
+import  PdfTextArea  from "./PdfTextArea"
+import  PdfTable  from "./PdfTable"
+import  Button  from "./Button"
 
 import { title, api_msg, components } from "./ComponentData"
 
@@ -21,6 +22,7 @@ export default class App extends React.Component {
 
         this.testJWTClick = this.testJWTClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        //this.handleClick = this.handleClick.bind(this);
     }
 
 
@@ -73,6 +75,12 @@ export default class App extends React.Component {
         */
     }
 
+    /*
+    handleClick(event) {
+
+    }
+    */
+
     textareaChanged(key, value) {
         let newInput = {};
         newInput[key] = value;
@@ -99,18 +107,32 @@ export default class App extends React.Component {
     rendercomponents() {
 
         let renderComponents = components.map(item => {
-            //console.log('comp', item);
+            console.log('comp', item);
 
             switch(item.type) {
                 case 'PdfTextArea':
                     return this.renderPdfTextArea(item);
                 case 'PdfTable':
                     return this.renderPdfTable(item);
+                //case 'Button':
+                    //return {};
+                    //return this.renderButton(item);
             }
         });
 
         return renderComponents;
 
+    }
+
+    renderButton(meta) {
+        console.log('here', meta);
+
+        return (
+            <WorkButton key={meta.id}
+                meta = {meta}
+                handleClick = {this.handleClick}
+            />
+        );
     }
 
     renderPdfTextArea(meta) {
