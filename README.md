@@ -1,7 +1,6 @@
-# react-rest-jwt-base
-Simple ReactJS App with Rest and JWT API.
+# buslead3x_workbook_tool
 
-This is a simple ReactJS app with a RESTful and JWT API.
+This is a workbook tool developed for UQx Buslead3x.
 
 ## Get Started 
 
@@ -14,7 +13,7 @@ This is necessary as BrowserSyncPlugin proxy setting lets you use existing Apach
 ### Step 2)
 1. Create database and user account for the database. The information is needed by config.php.
 
-2. If using DB, create tables by importing ./db_install/react_rest_jwt_base.sql
+2. If using DB, create tables by importing ./db_install/xxxxxxxxx.sql
 
 3. Ensure that you have a proper ./public/config.php. See below for the boiler plate
 

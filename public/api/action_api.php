@@ -148,7 +148,7 @@ require_once('../lib/jwt_helper.php');
 require_once('../config.php');
 
 if(isset($config['use_db']) && $config['use_db']) {
-	require_once('./lib/db.php');
+	require_once('../lib/db.php');
 	Db::config( 'driver',   'mysql' );
 	Db::config( 'host',     $config['db_meta']['hostname'] );
 	Db::config( 'database', $config['db_meta']['database'] );

@@ -24,11 +24,12 @@ export default class App extends React.Component {
 
         console.log('state', this.state);
 
-        this.testJWTClick = this.testJWTClick.bind(this);
+//        this.testJWTClick = this.testJWTClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     
         this.saveDB = this.saveDB.bind(this);
+        this.downloadPDF = this.downloadPDF.bind(this);
     }
 
 
@@ -92,8 +93,13 @@ export default class App extends React.Component {
             break;
             
             case 'downloadPDF':
+                this.downloadPDF();
             break;
         }
+    }
+
+    downloadPDF() {
+        console.log('downloadPDF', this.state);
     }
 
     saveDB() {

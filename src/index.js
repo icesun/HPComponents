@@ -1,7 +1,6 @@
 
 import React from "react"
 import ReactDOM from "react-dom"
-import { BrowserRouter } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -11,7 +10,7 @@ import App from "./Components/App"
 export const attemptTable = 'Attempts';
 
 export const client = axios.create({
-    baseURL: '../public/api/rest_api.php/',
+    baseURL: './api/rest_api.php/',
     responseType: 'json'
 });
 
@@ -46,10 +45,8 @@ const appContainer = document.getElementById('app');
 
 function loadApp(dbAttempt) {
     ReactDOM.render(
-        <BrowserRouter>
             <App 
                 dbAttempt={dbAttempt}
-            />
-        </BrowserRouter>,
+            />,
     appContainer);
 }
