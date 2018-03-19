@@ -50,7 +50,7 @@ export default class App extends React.Component {
     }
 
     handleChange(event) {
-        console.log('handle changes...', event.target, event.target.value, event.target.type, event.target.getAttribute('data-key'));
+        //console.log('handle changes...', event.target, event.target.value, event.target.type, event.target.getAttribute('data-key'));
 
         let newInput = {};
 
@@ -83,7 +83,7 @@ export default class App extends React.Component {
 
     
     handleClick(event) {
-        console.log('clicked', event.target, event.target.getAttribute('data-action'));
+        //console.log('clicked', event.target, event.target.getAttribute('data-action'));
         let action = event.target.getAttribute('data-action');
 
         switch(action) {
@@ -115,7 +115,11 @@ export default class App extends React.Component {
                 }
             })
             .then((response)=> {
-                console.log('response', response);
+                //console.log('response', response);
+                //console.log('updated', this.state);
+                this.setState((prevState) => {
+                    return {dbAttempt: Object.assign({}, prevState.dbAttempt, update_attempt)};
+                });
             })
             .catch((error)=> {
                 console.log('error', error);
@@ -139,10 +143,11 @@ export default class App extends React.Component {
                 }
             })
             .then((response)=> {
-                console.log('response', response);
+                //console.log('response', response);
+                //console.log('saved', this.state);
                 //let attempt_id = response.data;
                 this.setState((prevState) => {
-                    return {dbAttempt: Object.assign({}, prevState.dbAttempt, {attempt_id: response.data})};
+                    return {dbAttempt: Object.assign({}, prevState.dbAttempt, {attempt_id: response.data}, attempt)};
                 });
 
             })
@@ -180,7 +185,7 @@ export default class App extends React.Component {
     rendercomponents() {
 
         let renderComponents = components.map(item => {
-            console.log('comp', item);
+            //console.log('comp', item);
 
             switch(item.type) {
                 case 'PdfTextArea':
@@ -198,7 +203,6 @@ export default class App extends React.Component {
     }
 
     renderButton(meta) {
-        console.log('here', meta);
 
         return (
             <Button key={meta.id}
@@ -234,11 +238,7 @@ export default class App extends React.Component {
 
 
     render(){
-        //console.log('lti_var', $LTI_VARS);
-        //console.log('jwt_token', $JWT_TOKEN);
-
         var renderComponents = this.rendercomponents();
-        console.log('aaa', renderComponents);
 
         return (
           <div className="container">

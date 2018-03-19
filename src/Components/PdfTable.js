@@ -71,7 +71,7 @@ export default class PdfTable extends React.Component {
 
 
    render() {
-    console.log('table props', this.props);
+    //console.log('table props', this.props);
 
     var meta = this.props.meta;
     //var data = this.props.data;
