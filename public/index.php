@@ -20,6 +20,9 @@
             /* Transfer lti information to client */
             $lti_vars = $lti->calldata();
 
+            /* Activity ID */
+            $activity_id = isset($lti_vars['custom_activity_id']) ? $lti_vars['custom_activity_id'] : 1;
+
             /* Create JWT Token */
             $jwt_token = array();
             $jwt_token['resource_link_id'] = $lti->lti_id();
@@ -34,6 +37,9 @@
         $LTI_VARS = <?php echo json_encode($lti_vars); ?>;
         $JWT_TOKEN = <?php echo json_encode($jwt_encode_token); ?>;
 
+        $ACTIVITY_ID = $LTI_VARS['custom_activity_id'] ? $LTI_VARS['custom_activity_id'] :1;
+        $COURSE_ID = $LTI_VARS['context_id'];
+        $STUDENT_ID = $LTI_VARS['user_id'];
 	</script>
     <div id="app"></div>
     <script type="text/javascript" src="./build/bundle.js"></script>

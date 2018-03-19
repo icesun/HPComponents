@@ -146,7 +146,7 @@ export const components = [
         classes: 'btn btn-primary',
         value: 'Submit',
         extra: {
-
+            action: 'saveDB',
         }
     },
     {
@@ -155,9 +155,8 @@ export const components = [
         classes: 'btn btn-primary',
         value: 'Download PDF',
         extra: {
-
+            action: 'downloadPDF',
         }
-
     }
 
 ];

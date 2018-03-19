@@ -21,7 +21,7 @@ export default class Button extends React.Component {
 
 
     return(
-      <button className={meta.classes} onClick={this.props.handleClick}>{meta.value}</button>
+      <button className={meta.classes} onClick={this.props.handleClick} data-action={meta.extra.action}>{meta.value}</button>
     );
 
 

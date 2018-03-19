@@ -1,5 +1,7 @@
 import React from "react"
-import axios from "axios"
+//import axios from "axios"
+import { attemptTable, client } from "../index"
+
 
 import  PdfTextArea  from "./PdfTextArea"
 import  PdfTable  from "./PdfTable"
@@ -15,14 +17,18 @@ export default class App extends React.Component {
 
         //this.state = this.initStateInput(components, props.dbAttempt);
         this.state = {};
-        props.dbAttempt.attempt_json ? this.state.storedAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.storedAttempt = {};
-        this.state.inputAttempt = this.state.storedAttempt;
+//        props.dbAttempt.attempt_json ? this.state.storedAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.storedAttempt = {};
+        this.state.dbAttempt = props.dbAttempt;
+        props.dbAttempt.attempt_json ? this.state.inputAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.inputAttempt = {};
+//        this.state.inputAttempt = this.state.storedAttempt;
 
         console.log('state', this.state);
 
         this.testJWTClick = this.testJWTClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+    
+        this.saveDB = this.saveDB.bind(this);
     }
 
 
@@ -77,7 +83,73 @@ export default class App extends React.Component {
 
     
     handleClick(event) {
-        console.log('clicked');
+        console.log('clicked', event.target, event.target.getAttribute('data-action'));
+        let action = event.target.getAttribute('data-action');
+
+        switch(action) {
+            case 'saveDB':
+                this.saveDB();
+            break;
+            
+            case 'downloadPDF':
+            break;
+        }
+    }
+
+    saveDB() {
+        console.log('saveDB', this.state);
+
+        var now = new Date().getTime();
+        var attempt_json = JSON.stringify(this.state.inputAttempt);
+        if(this.state.dbAttempt.attempt_id)  {
+            //attempt exist, update it
+            let aid = this.state.dbAttempt.attempt_id;
+            let update_attempt = {
+                attempt_json: attempt_json,
+                update_timestamp: now
+            };
+
+            client.put('/' + attemptTable + '/' + aid, update_attempt, {
+                params: {
+                    jwt_token: $JWT_TOKEN,
+                }
+            })
+            .then((response)=> {
+                console.log('response', response);
+            })
+            .catch((error)=> {
+                console.log('error', error);
+            });
+            
+        }
+        else {
+
+            //attempt not exist, create it
+            let attempt = {
+                activity_id: $ACTIVITY_ID,
+                course_id: $COURSE_ID,
+                student_id: $STUDENT_ID,
+                attempt_json: attempt_json,
+                create_timestamp: now
+            };
+
+            client.post('/' + attemptTable, attempt, {
+                params: {
+                    jwt_token: $JWT_TOKEN,
+                }
+            })
+            .then((response)=> {
+                console.log('response', response);
+                //let attempt_id = response.data;
+                this.setState((prevState) => {
+                    return {dbAttempt: Object.assign({}, prevState.dbAttempt, {attempt_id: response.data})};
+                });
+
+            })
+            .catch((error)=> {
+                console.log('error', error);
+            });
+        }
 
     }
     
@@ -86,7 +158,7 @@ export default class App extends React.Component {
         let newInput = {};
         newInput[key] = value;
         return newInput;
-    }
+    }   
 
 
     testJWTClick(event) {
