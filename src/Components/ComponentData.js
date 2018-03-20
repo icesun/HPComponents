@@ -1,6 +1,9 @@
 import '../StyleSheets/PdfTable.scss'
 import '../StyleSheets/PdfTextArea.scss'
 
+export const title = 'Cultural Workbook Tool';
+
+export const api_msg = '';
 
 export const components = [
     {
@@ -16,12 +19,12 @@ export const components = [
     {
         id: 'c2',
         type: 'PdfTable',
-        classes: "table pdftable",
+        classes: "table table-bordered pdftable",
         div_classes: "form-group table-responsive",
         tr_arr: [
             {
                 id: 'c2_1',
-                classes: '',
+                classes: 'tr-header',
                 td_arr: [
                     {id: 'c2_1_1', type: 'NormalTD', text: 'Lever', classes: 'th-black'},
                     {id: 'c2_1_2', type: 'NormalTD', text: 'What’s happening now?', classes: 'td-black'},
@@ -160,3 +163,23 @@ export const components = [
     }
 
 ];
+
+export const components_pdfstyles = {
+    header: {
+        fontSize: 18,
+        bold: true,
+        margin: [0, 10] 
+    },
+    taLabel: {
+        fontSize: 14,
+        bold: true,
+    },
+    oneline: {
+        margin: [0, 10, 0, 20]
+    }
+
+};
+
+export const tableWidths = {
+    c2: ['25%', '*', '*']
+};

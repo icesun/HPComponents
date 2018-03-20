@@ -45,8 +45,8 @@ const appContainer = document.getElementById('app');
 
 function loadApp(dbAttempt) {
     ReactDOM.render(
-            <App 
-                dbAttempt={dbAttempt}
-            />,
+        <App 
+            dbAttempt={dbAttempt}
+        />,
     appContainer);
 }

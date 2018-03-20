@@ -7,7 +7,7 @@ import  PdfTextArea  from "./PdfTextArea"
 import  PdfTable  from "./PdfTable"
 import  Button  from "./Button"
 
-import { title, api_msg, components } from "./ComponentData"
+import { title, api_msg, components, components_pdfstyles, tableWidths } from "./ComponentData"
 
 
 
@@ -30,6 +30,13 @@ export default class App extends React.Component {
     
         this.saveDB = this.saveDB.bind(this);
         this.downloadPDF = this.downloadPDF.bind(this);
+
+        this.pdfTextArea = this.pdfTextArea.bind(this);
+
+        this.pdfTable = this.pdfTable.bind(this);
+        this.pdfTR = this.pdfTR.bind(this);
+        this.pdfTD = this.pdfTD.bind(this);
+        this.pdfEmbed = this.pdfEmbed.bind(this);
     }
 
 
@@ -100,7 +107,166 @@ export default class App extends React.Component {
 
     downloadPDF() {
         console.log('downloadPDF', this.state);
+
+        //var docDefinition = { content: "hello world" };
+        //pdfMake.createPdf(docDefinition).download();
+
+        var docDefinition = {};
+
+        var pdf_title = {};
+        if(title) {
+            pdf_title = {
+                text: title,
+                style: 'header',
+            }
+        }
+
+        var pdf_api_msg = {};
+        if(api_msg) {
+            pdf_api_msg = {
+                text: api_msg,
+                style: 'api_msg',
+            }
+        }
+
+        let pdfContent = components.map(item => {
+
+            switch(item.type) {
+                case 'PdfTextArea':
+                    return this.pdfTextArea(item);
+
+                case 'PdfTable':
+                    return this.pdfTable(item);
+        
+                case 'Button':
+                return '';
+
+                default: 
+                    return '';
+            }
+
+        });
+
+        docDefinition['content'] = [ pdf_title,  pdf_api_msg, ...pdfContent];
+        docDefinition['styles'] = components_pdfstyles;
+
+        console.log('docDefinition', docDefinition);
+        pdfMake.createPdf(docDefinition).download();
+
+
     }
+
+
+    pdfTextArea(item) {
+        console.log('pdfTextarea', item, this.state);
+        var pdfTA = [];
+        if(item.extra) {
+            if(item.extra.label) {
+                pdfTA.push({
+                    text: item.extra.label,
+                    style: 'taLabel',
+                });
+            }
+            if(item.extra.question) {
+                pdfTA.push({
+                    text: item.extra.question,
+                    style:'taDesc',
+                });
+            }
+        }
+
+        this.state.inputAttempt[item.id] ? value = this.state.inputAttempt[item.id] : value = '';
+        pdfTA.push({
+            style: 'oneline',
+            table: {
+                widths: ['*'],
+                body: [
+                    [value + '\n\n']
+                ]
+            }
+        });
+
+        return pdfTA;
+    }
+
+
+    pdfEmbed(item) {
+
+        var pdfEmbed;
+
+        switch(item.type) {
+            case 'PdfTextArea':
+                if(item.pdfClass) {
+                    pdfEmbed = {};
+                    pdfEmbed['text'] = this.state.inputAttempt[item.id];
+                    pdfEmbed['style'] = item.style;
+                }
+                else {
+                    this.state.inputAttempt[item.id] ? pdfEmbed = this.state.inputAttempt[item.id] : pdfEmbed = '';
+                }
+            break;
+                
+        }
+
+        console.log('pdfEmbed', pdfEmbed);
+
+        return pdfEmbed;
+
+
+
+    }
+
+    pdfTD(item) {
+        console.log('td', item);
+
+        var pdfTD;
+        
+        switch(item.type) {
+            case 'NormalTD': 
+                if(item.pdfClass) {
+                    pdfTD = {};
+                    pdfTD['text'] = item.text;
+                    pdfTD['style'] = item.style;
+                }
+                else {
+                    pdfTD = item.text;
+                }
+            break;
+
+            case 'EmbededTD':
+                pdfTD = item.embed.map(this.pdfEmbed);
+            break;
+
+        }
+
+        return pdfTD;
+    }
+
+    pdfTR(item) {
+        console.log('pdfTR', item, this.state);
+
+        var pdfTR = item.td_arr.map(this.pdfTD);
+
+        return pdfTR;
+    }
+
+    pdfTable(item) {
+        console.log('pdfTable', item, this.state);
+        var pdfTable = {};
+
+        var tableBody = item.tr_arr.map(this.pdfTR);
+
+        pdfTable.widths = tableWidths[item.id];
+        item.headerRows ? pdfTable.headerRows = item.headerRows : pdfTable.headerRows = 1;
+
+        pdfTable.body = tableBody;
+
+        return {
+            style: 'oneline',
+            table: pdfTable
+        };
+    }
+
 
     saveDB() {
         console.log('saveDB', this.state);

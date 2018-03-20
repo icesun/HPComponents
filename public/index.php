@@ -43,5 +43,7 @@
 	</script>
     <div id="app"></div>
     <script type="text/javascript" src="./build/bundle.js"></script>
+    <script src='../src/lib/pdfmake.min.js'></script>
+ 	<script src='../src/lib/vfs_fonts.js'></script>
     </body>
 </html>
