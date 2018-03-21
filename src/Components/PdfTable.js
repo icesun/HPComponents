@@ -1,7 +1,8 @@
 import React from "react"
-import uuid from "uuid"
+//import uuid from "uuid"
 
 import  PdfTextArea  from "./PdfTextArea"
+import { createKey } from "./App"
 
 //import '../StyleSheets/PdfTable.scss'
 
@@ -59,14 +60,14 @@ export default class PdfTable extends React.Component {
     }
 
 
-    return (<td key={'td' + meta.id} class={meta.classes}>{tdContent}</td>);
+    return (<td key={createKey(meta)} class={meta.classes}>{tdContent}</td>);
   }
   
 
   createTR(meta) { 
     var tdArray = meta.td_arr.map(this.createTD);
     
-    return (<tr key={'tr' + meta.id} className={meta.classes}>{tdArray}</tr>);  
+    return (<tr key={createKey(meta)} className={meta.classes}>{tdArray}</tr>);  
    }
 
 

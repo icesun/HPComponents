@@ -5,6 +5,12 @@ export const title = 'Cultural Workbook Tool';
 
 export const api_msg = '';
 
+/** 
+ *  1. Input components have to HAVE ID
+ * 
+ * 
+ * 
+ */
 export const components = [
     {
         id: 'c1',
@@ -183,3 +189,4 @@ export const components_pdfstyles = {
 export const tableWidths = {
     c2: ['25%', '*', '*']
 };
+

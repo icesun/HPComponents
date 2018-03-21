@@ -1,4 +1,7 @@
 import React from "react"
+import uuid from "uuid"
+
+
 //import axios from "axios"
 import { attemptTable, client } from "../index"
 
@@ -7,11 +10,18 @@ import  PdfTextArea  from "./PdfTextArea"
 import  PdfTable  from "./PdfTable"
 import  Button  from "./Button"
 
-import { title, api_msg, components, components_pdfstyles, tableWidths } from "./ComponentData"
+import { title, api_msg, components, components_pdfstyles, tableWidths } from "../data/ComponentData"
 
+export function createKey(meta) {
+    if(meta.id) {
+        return meta.id;
+    }
+    else {
+        return uuid.v4();
+    }
+}
 
-
-export default class App extends React.Component {
+export class App extends React.Component {
     constructor(props){
         super(props);
 
@@ -375,9 +385,10 @@ export default class App extends React.Component {
     }
 
     renderButton(meta) {
+        var key = createKey(meta);
 
         return (
-            <Button key={meta.id}
+            <Button key={key}
                 meta = {meta}
                 handleClick = {this.handleClick}
             />
@@ -385,9 +396,10 @@ export default class App extends React.Component {
     }
 
     renderPdfTextArea(meta) {
+        var key = createKey(meta);
 
         return (
-            <PdfTextArea  key={meta.id}
+            <PdfTextArea  key={key}
                 meta = {meta}
                 handleChange = {this.handleChange}
                 data = {this.state.inputAttempt}
@@ -397,8 +409,10 @@ export default class App extends React.Component {
 
 
     renderPdfTable(meta) {
+        var key = createKey(meta);
+
         return (
-            <PdfTable key={meta.id} 
+            <PdfTable key={key} 
                 meta = {meta}
                 handleChange = {this.handleChange}
                 data = {this.state.inputAttempt}
