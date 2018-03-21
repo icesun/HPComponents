@@ -15,12 +15,9 @@ export default class App extends React.Component {
     constructor(props){
         super(props);
 
-        //this.state = this.initStateInput(components, props.dbAttempt);
         this.state = {};
-//        props.dbAttempt.attempt_json ? this.state.storedAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.storedAttempt = {};
         this.state.dbAttempt = props.dbAttempt;
         props.dbAttempt.attempt_json ? this.state.inputAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.inputAttempt = {};
-//        this.state.inputAttempt = this.state.storedAttempt;
 
         console.log('state', this.state);
 
@@ -108,9 +105,6 @@ export default class App extends React.Component {
     downloadPDF() {
         console.log('downloadPDF', this.state);
 
-        //var docDefinition = { content: "hello world" };
-        //pdfMake.createPdf(docDefinition).download();
-
         var docDefinition = {};
 
         var pdf_title = {};
@@ -150,15 +144,23 @@ export default class App extends React.Component {
         docDefinition['content'] = [ pdf_title,  pdf_api_msg, ...pdfContent];
         docDefinition['styles'] = components_pdfstyles;
 
-        console.log('docDefinition', docDefinition);
-        pdfMake.createPdf(docDefinition).download();
+        docDefinition['footer'] = function(currentPage, pageCount) {
+            var columns = [];
+            var d = new Date();
+            columns.push(d.toString());
+            columns.push({text: currentPage, alignment: 'right'});
 
+            return {columns: columns};
+        }
+    
+        //console.log('docDefinition', docDefinition);
+        pdfMake.createPdf(docDefinition).download();
 
     }
 
 
     pdfTextArea(item) {
-        console.log('pdfTextarea', item, this.state);
+        //console.log('pdfTextarea', item, this.state);
         var pdfTA = [];
         if(item.extra) {
             if(item.extra.label) {
@@ -175,6 +177,7 @@ export default class App extends React.Component {
             }
         }
 
+        var value;
         this.state.inputAttempt[item.id] ? value = this.state.inputAttempt[item.id] : value = '';
         pdfTA.push({
             style: 'oneline',
@@ -208,16 +211,14 @@ export default class App extends React.Component {
                 
         }
 
-        console.log('pdfEmbed', pdfEmbed);
+        //console.log('pdfEmbed', pdfEmbed);
 
         return pdfEmbed;
-
-
 
     }
 
     pdfTD(item) {
-        console.log('td', item);
+        //console.log('td', item);
 
         var pdfTD;
         
@@ -243,7 +244,7 @@ export default class App extends React.Component {
     }
 
     pdfTR(item) {
-        console.log('pdfTR', item, this.state);
+        //console.log('pdfTR', item, this.state);
 
         var pdfTR = item.td_arr.map(this.pdfTD);
 
@@ -251,7 +252,7 @@ export default class App extends React.Component {
     }
 
     pdfTable(item) {
-        console.log('pdfTable', item, this.state);
+        //console.log('pdfTable', item, this.state);
         var pdfTable = {};
 
         var tableBody = item.tr_arr.map(this.pdfTR);
@@ -365,7 +366,6 @@ export default class App extends React.Component {
                 case 'PdfTable':
                     return this.renderPdfTable(item);
                 case 'Button':
-                    //return '';
                     return this.renderButton(item);
             }
         });
@@ -399,8 +399,6 @@ export default class App extends React.Component {
     renderPdfTable(meta) {
         return (
             <PdfTable key={meta.id} 
-                //tClassName = {meta.classes}
-                //trMeta = {meta.tr_arr}
                 meta = {meta}
                 handleChange = {this.handleChange}
                 data = {this.state.inputAttempt}
