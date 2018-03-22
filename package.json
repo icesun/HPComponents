@@ -1,8 +1,8 @@
 {
-  "name": "buslead3x_workbook_tool",
+  "name": "corpinn1x_vpc",
   "version": "0.0.1",
-  "description": "buslead3x_workbook_tool",
-  "main": "index.js",
+  "description": "This is a 'value prposition canvas' tool developed for UQx CORPINN1x.",
+  "main": "index.php",
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack -p --config ./webpack-production.config.js"
@@ -13,18 +13,19 @@
     "jwt",
     "js",
     "php",
-    "api"
+    "api",
+    "pdfmake"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UQ-UQx/buslead3x_workbook_tool.git"
+    "url": "git+https://github.com/UQ-UQx/CORPINN1x_VPC.git"
   },
   "author": "Sai Sun",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/UQ-UQx/buslead3x_workbook_tool.git/issues"
+    "url": "https://github.com/UQ-UQx/CORPINN1x_VPC.git/issues"
   },
-  "homepage": "https://github.com/UQ-UQx/buslead3x_workbook_tool.git#readme",
+  "homepage": "https://github.com/UQ-UQx/CORPINN1x_VPC.git#readme",
   "devDependencies": {
     "ajv": "^6.3.0",
     "babel-cli": "^6.24.0",
