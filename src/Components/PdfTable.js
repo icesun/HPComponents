@@ -23,13 +23,13 @@ export default class PdfTable extends React.Component {
    componentWillUnmount(){
    }
 
-  createEmbed(meta) {
-    //console.log('embed', meta);
+  createEmbed(meta, i, prefix) {
+    var key = createKey(meta, i, prefix);
 
     switch(meta.type) {
       case 'PdfTextArea':
         return (
-          <PdfTextArea key={meta.id}
+          <PdfTextArea key={key}
             meta = {meta}
             handleChange = {this.props.handleChange}
             data = {this.props.data}
@@ -45,7 +45,9 @@ export default class PdfTable extends React.Component {
   }
 
 
-  createTD(meta) {
+  createTD(meta, i, prefix) {
+    var key = createKey(meta, i, prefix);
+
     var tdContent = '';
 
     switch(meta.type) {
@@ -54,20 +56,22 @@ export default class PdfTable extends React.Component {
       break;
 
       case 'EmbededTD':
-        tdContent = meta.embed.map(this.createEmbed);
+        tdContent = meta.embed.map((x, i) => { return this.createEmbed(x, i, key); });
       break;
 
     }
 
 
-    return (<td key={createKey(meta)} class={meta.classes}>{tdContent}</td>);
+    return (<td key={key} class={meta.classes}>{tdContent}</td>);
   }
   
 
-  createTR(meta) { 
-    var tdArray = meta.td_arr.map(this.createTD);
+  createTR(meta, i, prefix) { 
+    var key = createKey(meta, i, prefix);
+
+    var tdArray = meta.td_arr.map((x, i) => { return this.createTD(x, i, key); });
     
-    return (<tr key={createKey(meta)} className={meta.classes}>{tdArray}</tr>);  
+    return (<tr key={key} className={meta.classes}>{tdArray}</tr>);  
    }
 
 
@@ -77,7 +81,7 @@ export default class PdfTable extends React.Component {
     var meta = this.props.meta;
     //var data = this.props.data;
      
-    var trArray = meta.tr_arr.map(this.createTR);
+    var trArray = meta.tr_arr.map((x, i) => { return this.createTR(x, i, meta.id); });
 
      return(
         <div className={meta.div_classes}>

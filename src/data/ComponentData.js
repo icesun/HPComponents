@@ -1,17 +1,19 @@
 import '../StyleSheets/PdfTable.scss'
 import '../StyleSheets/PdfTextArea.scss'
 
-export const title = 'Cultural Workbook Tool';
+export const title = 'Value Proposition Canvas';
 
 export const api_msg = '';
 
 /** 
  *  1. Input components have to HAVE ID
- * 
+ *  2. First level components have to HAVE ID
  * 
  * 
  */
 export const components = [
+
+
     {
         id: 'c1',
         type: 'PdfTextArea',
@@ -22,121 +24,60 @@ export const components = [
             question: 'Current situation: What is happening now; what is problematic?  Desired future: What is the business need; What does the context/strategy call for?',
         }        
     },
+
     {
-        id: 'c2',
+        type: 'StringComponent',
+        tag: 'p',
+        classes: '',
+        text: 'Value Proposition',
+    },
+
+
+    // Value Proposition Table
+    {
+        id: 'value_proposition',
         type: 'PdfTable',
-        classes: "table table-bordered pdftable",
+        classes: "table pdftable",
         div_classes: "form-group table-responsive",
         tr_arr: [
             {
-                id: 'c2_1',
-                classes: 'tr-header',
+                classes: 'tr_header',
                 td_arr: [
-                    {id: 'c2_1_1', type: 'NormalTD', text: 'Lever', classes: 'th-black'},
-                    {id: 'c2_1_2', type: 'NormalTD', text: 'What’s happening now?', classes: 'td-black'},
-                    {id: 'c2_1_3', type: 'NormalTD', text: 'What could you do?', classes: 'td-black'}]
+                    {type: 'NormalTD', text: 'Products & Services', classes: 'th_first'},
+                    {type: 'NormalTD', text: 'Gain Creators', classes: 'th_first'},
+                    {type: 'NormalTD', text: 'Pain Relievers', classes: 'th_first'},
+                ]                
             },
             {
-                id: 'c2_2',
-                classes: '',
+                classes: 'tr_header',
                 td_arr: [
-                    {id: 'c2_2_1', type: 'NormalTD', text: 'Leadership commitment(What’s modelled)', classes: 'th-blue'},
-                    {id: 'c2_2_2', type: 'EmbededTD', classes: 'td-blue td-embed', 
+                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
+                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
+                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
+                ]                
+            },
+            {
+                td_arr: [
+                    {type: 'EmbededTD', classes: 'td_embed', 
                         embed: [
-                            {id: 'c2_2_2_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                        ]},
-                    {id: 'c2_2_3', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_2_3_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]},
-                ]
-            },
-            {
-                id: 'c2_3',
-                classes: '',
-                td_arr: [
-                    {id: 'c2_3_1', type: 'NormalTD', text: 'Values & behaviours(What’s expected)', classes: 'th-blue'},
-                    {id: 'c2_3_2', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_3_2_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]},
-                    {id: 'c2_3_3', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_3_3_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]}]
-            },
-            {
-                id: 'c2_4',
-                classes: '',
-                td_arr: [
-                    {id: 'c2_4_1', type: 'NormalTD', text: 'Workforce capabilities(Who’s equipped)', classes: 'th-blue'},
-                    {id: 'c2_4_2', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_4_2_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]},
-                    {id: 'c2_4_3', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_4_3_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]}]
-            },
-            {
-                id: 'c2_5',
-                classes: '',
-                td_arr: [
-                    {id: 'c2_5_1', type: 'NormalTD', text: 'Recognition & consequences(What’s reinforced)', classes: 'th-blue'},
-                    {id: 'c2_5_2', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_5_2_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]},
-                    {id: 'c2_5_3', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_5_3_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]}]
-            },
-            {
-                id: 'c2_6',
-                classes: '',
-                td_arr: [
-                    {id: 'c2_6_1', type: 'NormalTD', text: 'Practices & procedures(What’s habitual)', classes: 'th-blue'},
-                    {id: 'c2_6_2', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_6_2_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]},
-                    {id: 'c2_6_3', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_6_3_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]}],
-            },
-            {
-                id: 'c2_7',
-                classes: '',
-                td_arr: [
-                    {id: 'c2_7_1', type: 'NormalTD', text: 'Underpinning structures(What enables)', classes: 'th-blue'},
-                    {id: 'c2_7_2', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_7_2_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]},
-                    {id: 'c2_7_3', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_7_3_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]}]
-            },
-            {
-                id: 'c2_8',
-                classes: '',
-                td_arr: [
-                    {id: 'c2_8_1', type: 'NormalTD', text: 'Monitor & evolve(What’s measured)', classes: 'th-blue'},
-                    {id: 'c2_8_2', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_8_2_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]},
-                    {id: 'c2_8_3', type: 'EmbededTD', classes: 'td-blue td-embed', 
-                    embed: [
-                        {id: 'c2_8_3_1', type: 'PdfTextArea', classes: 'form-control embed_component'},
-                    ]}]
-            },
+                            {id: 'value_products_services', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    },
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'value_gain_creators', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    },
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'value_pain_relievers', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    },
+                ]                
+            }
         ],
     },
+
     {
         id: 'c3',
         type: 'PdfTextArea',
@@ -149,6 +90,8 @@ export const components = [
         }
         
     },
+
+
     {
         id: 'c4',
         type: 'Button',
@@ -167,7 +110,6 @@ export const components = [
             action: 'downloadPDF',
         }
     }
-
 ];
 
 export const components_pdfstyles = {

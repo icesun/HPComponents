@@ -12,13 +12,19 @@ import  Button  from "./Button"
 
 import { title, api_msg, components, components_pdfstyles, tableWidths } from "../data/ComponentData"
 
-export function createKey(meta) {
+
+// Key have to be fixed every running
+export function createKey(meta, index = 0, prefix = '') {
     if(meta.id) {
         return meta.id;
     }
-    else {
-        return uuid.v4();
+
+    if(prefix) {
+        //console.log('here', prefix);
+        return prefix + '_' + index;
     }
+    
+    return uuid.v4();
 }
 
 export class App extends React.Component {
@@ -44,6 +50,7 @@ export class App extends React.Component {
         this.pdfTR = this.pdfTR.bind(this);
         this.pdfTD = this.pdfTD.bind(this);
         this.pdfEmbed = this.pdfEmbed.bind(this);
+        //this.pdfStringComponent = this.pdfStringComponent.bind(this);
     }
 
 
@@ -65,20 +72,24 @@ export class App extends React.Component {
     }
 
     handleChange(event) {
-        //console.log('handle changes...', event.target, event.target.value, event.target.type, event.target.getAttribute('data-key'));
+        //console.log('handle changes...', event.target.dataset.key);
 
-        let newInput = {};
 
         switch(event.target.type) {
             case 'textarea':
-                newInput = this.textareaChanged(event.target.getAttribute('data-key'), event.target.value);
+
+                this.setState({
+                    inputAttempt: {...this.state.inputAttempt, [event.target.dataset.key]:event.target.value}
+                })
             break;
 
         }
 
-        this.setState((prevState) => {
-            return {inputAttempt: Object.assign({}, prevState.inputAttempt, newInput)};
-        });
+
+        // this.setState((prevState) => {
+        //     return 
+        //     // return {inputAttempt: Object.assign({}, prevState.inputAttempt, newInput)};
+        // });
 
 
         /*
@@ -142,6 +153,12 @@ export class App extends React.Component {
                 case 'PdfTable':
                     return this.pdfTable(item);
         
+
+                case 'StringComponent':
+                    return this.pdfStringComponent(item);
+
+
+
                 case 'Button':
                 return '';
 
@@ -163,9 +180,30 @@ export class App extends React.Component {
             return {columns: columns};
         }
     
-        //console.log('docDefinition', docDefinition);
+        console.log('docDefinition', docDefinition);
         pdfMake.createPdf(docDefinition).download();
 
+    }
+
+    pdfStringComponent(item) {
+        var pdfStringComponent = {};
+
+        switch(item.tag) {
+            case 'p':
+                pdfStringComponent['text'] = item.text;
+                if(item.pdf_style) {
+                    pdfStringComponent['style'] = item.pdf_style;
+                }
+                else if(item.style) {
+                    pdfStringComponent['style'] = item.style;
+                }
+                else {
+                    pdfStringComponent['style'] = '';
+                }
+            break;
+        }
+
+        return pdfStringComponent;
     }
 
 
@@ -341,13 +379,13 @@ export class App extends React.Component {
 
     }
     
-
+/*
     textareaChanged(key, value) {
         let newInput = {};
         newInput[key] = value;
         return newInput;
     }   
-
+*/
 
     testJWTClick(event) {
         console.log('testJWT clicked.');
@@ -375,6 +413,10 @@ export class App extends React.Component {
                     return this.renderPdfTextArea(item);
                 case 'PdfTable':
                     return this.renderPdfTable(item);
+
+                case 'StringComponent':
+                    return this.renderStringComponent(item);
+
                 case 'Button':
                     return this.renderButton(item);
             }
@@ -383,6 +425,21 @@ export class App extends React.Component {
         return renderComponents;
 
     }
+
+    renderStringComponent(meta) {
+        var key = createKey(meta);
+        var result;
+
+        switch(meta.tag) {
+            case 'p':
+                result = <p className={meta.classes} key={key}>{meta.text}</p>;
+            break;
+
+        }
+
+        return result;
+    }
+
 
     renderButton(meta) {
         var key = createKey(meta);
@@ -409,6 +466,7 @@ export class App extends React.Component {
 
 
     renderPdfTable(meta) {
+        //console.log('table', meta);
         var key = createKey(meta);
 
         return (
@@ -423,6 +481,8 @@ export class App extends React.Component {
 
     render(){
         var renderComponents = this.rendercomponents();
+
+        //console.log('render components', renderComponents);
 
         return (
           <div className="container">
