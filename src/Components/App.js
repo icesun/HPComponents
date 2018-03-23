@@ -10,7 +10,7 @@ import  PdfTextArea  from "./PdfTextArea"
 import  PdfTable  from "./PdfTable"
 import  Button  from "./Button"
 
-import { title, api_msg, components, components_pdfstyles, tableWidths } from "../data/ComponentData"
+import { components, components_pdfstyles, tableWidths } from "../data/ComponentData"
 
 
 // Key have to be fixed every running
@@ -128,6 +128,7 @@ export class App extends React.Component {
 
         var docDefinition = {};
 
+        /*
         var pdf_title = {};
         if(title) {
             pdf_title = {
@@ -143,6 +144,7 @@ export class App extends React.Component {
                 style: 'api_msg',
             }
         }
+        */
 
         let pdfContent = components.map(item => {
 
@@ -168,7 +170,8 @@ export class App extends React.Component {
 
         });
 
-        docDefinition['content'] = [ pdf_title,  pdf_api_msg, ...pdfContent];
+//        docDefinition['content'] = [ pdf_title,  pdf_api_msg, ...pdfContent];
+        docDefinition['content'] = pdfContent;
         docDefinition['styles'] = components_pdfstyles;
 
         docDefinition['footer'] = function(currentPage, pageCount) {
@@ -193,9 +196,6 @@ export class App extends React.Component {
                 pdfStringComponent['text'] = item.text;
                 if(item.pdf_style) {
                     pdfStringComponent['style'] = item.pdf_style;
-                }
-                else if(item.style) {
-                    pdfStringComponent['style'] = item.style;
                 }
                 else {
                     pdfStringComponent['style'] = '';
@@ -250,7 +250,7 @@ export class App extends React.Component {
                 if(item.pdfClass) {
                     pdfEmbed = {};
                     pdfEmbed['text'] = this.state.inputAttempt[item.id];
-                    pdfEmbed['style'] = item.style;
+                    pdfEmbed['style'] = item.pdf_style;
                 }
                 else {
                     this.state.inputAttempt[item.id] ? pdfEmbed = this.state.inputAttempt[item.id] : pdfEmbed = '';
@@ -275,7 +275,7 @@ export class App extends React.Component {
                 if(item.pdfClass) {
                     pdfTD = {};
                     pdfTD['text'] = item.text;
-                    pdfTD['style'] = item.style;
+                    pdfTD['style'] = item.pdf_style;
                 }
                 else {
                     pdfTD = item.text;
@@ -487,8 +487,6 @@ export class App extends React.Component {
 
         return (
           <div className="container">
-            <h1>{title}</h1>
-            <h2>{api_msg}</h2>
             <div>
                 {renderComponents} 
             </div>

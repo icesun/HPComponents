@@ -1,10 +1,6 @@
 import '../StyleSheets/PdfTable.scss'
 import '../StyleSheets/PdfTextArea.scss'
-import '../StyleSheets/StringComponent.css'
-
-export const title = 'Value Proposition Canvas';
-
-export const api_msg = '';
+import '../StyleSheets/StringComponent.scss'
 
 /** 
  *  1. Input components have to HAVE ID
@@ -13,14 +9,28 @@ export const api_msg = '';
  * 
  */
 export const components = [
+    {
+        type: 'StringComponent',
+        tag: 'p',
+        classes: 'header1',
+        pdf_style: 'header1',
+        text: 'Value Proposition Canvas',
+    },
+    {
+        type: 'StringComponent',
+        tag: 'p',
+        classes: 'header2',
+        pdf_style: 'header2',
+        text: '',
 
+    },
     {
         type: 'StringComponent',
         tag: 'p',
         classes: 'header_blue',
+        pdf_style: 'headerline',
         text: 'Value Proposition',
     },
-
 
     // Value Proposition Table
     {
@@ -140,7 +150,7 @@ export const components = [
 ];
 
 export const components_pdfstyles = {
-    header: {
+    header1: {
         fontSize: 18,
         bold: true,
         margin: [0, 10] 
@@ -151,8 +161,10 @@ export const components_pdfstyles = {
     },
     oneline: {
         margin: [0, 10, 0, 20]
+    },
+    headerline: {
+        fontSize: 16,
     }
-
 };
 
 export const tableWidths = {
