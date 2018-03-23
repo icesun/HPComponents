@@ -5,30 +5,8 @@ $primary-height: 100;
     padding: 2px;
 }
 
-
-.th-blue, .td-blue{
-    //border: 1px solid black;
-    height: $primary-height+ px;
+.th_first {
+    font-size: 16px;
+    font-weight: bold;
 }
 
-
-
-.th-blue {
-    width: 30%;
-}
-
-.td-blue {
-    width: 35%;
-}
-
-.td-embed {
-    padding: 0px  !important;
-}
-
-.embed_component {
-    border-style: none;
-    resize: none;
-    box-shadow: none;
-    overflow-y: scroll;
-    height: ($primary-height - 2) + px !important;
-}

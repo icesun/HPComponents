@@ -1,0 +1,15 @@
+.header_blue {
+    background-color: deepskyblue;
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.header_yellow {
+    background-color: gold;
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+    padding-left: 10px;
+}
