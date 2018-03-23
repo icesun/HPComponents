@@ -448,6 +448,7 @@ export class App extends React.Component {
             <Button key={key}
                 meta = {meta}
                 handleClick = {this.handleClick}
+                data = {this.state}
             />
         );
     }
