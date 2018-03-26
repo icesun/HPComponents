@@ -15,7 +15,7 @@ export default class Button extends React.Component {
    }
 
    render() {
-    console.log('button', this.props);
+    //console.log('button', this.props);
 
     var meta = this.props.meta;
     var data = this.props.data;

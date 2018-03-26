@@ -11,7 +11,7 @@ webpackConfig.forEach(function(object, index){
         object.module.loaders.push({
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'strip-loader?strip[]=//console.log'
+                loader: 'strip-loader?strip[]=console.log'
         });
 
 })

@@ -35,7 +35,7 @@ export class App extends React.Component {
         this.state.dbAttempt = props.dbAttempt;
         props.dbAttempt.attempt_json ? this.state.inputAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.inputAttempt = {};
 
-        console.log('state', this.state);
+        
 
 //        this.testJWTClick = this.testJWTClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -84,27 +84,6 @@ export class App extends React.Component {
             break;
 
         }
-
-
-        // this.setState((prevState) => {
-        //     return 
-        //     // return {inputAttempt: Object.assign({}, prevState.inputAttempt, newInput)};
-        // });
-
-
-        /*
-        let target_key = event.target.getAttribute('data-key');
-        let target_value = event.target.value;
-
-        this.setState((prevState) => {
-            let newInput = {}
-            newInput[target_key] = target_value;
-            console.log('target', target_key, target_value, newInput);
-
-            return {inputAttempt: Object.assign({}, prevState.inputAttempt, newInput)};
-
-        });
-        */
     }
 
     
@@ -119,6 +98,9 @@ export class App extends React.Component {
             
             case 'downloadPDF':
                 this.downloadPDF();
+            break;
+
+            default: 
             break;
         }
     }
@@ -337,7 +319,6 @@ export class App extends React.Component {
             })
             .then((response)=> {
                 //console.log('response', response);
-                //console.log('updated', this.state);
                 this.setState((prevState) => {
                     return {dbAttempt: Object.assign({}, prevState.dbAttempt, update_attempt)};
                 });
@@ -365,8 +346,7 @@ export class App extends React.Component {
             })
             .then((response)=> {
                 //console.log('response', response);
-                //console.log('saved', this.state);
-                //let attempt_id = response.data;
+        
                 this.setState((prevState) => {
                     return {dbAttempt: Object.assign({}, prevState.dbAttempt, {attempt_id: response.data}, attempt)};
                 });
@@ -483,7 +463,6 @@ export class App extends React.Component {
     render(){
         var renderComponents = this.rendercomponents();
 
-        //console.log('render components', renderComponents);
 
         return (
           <div className="container">
