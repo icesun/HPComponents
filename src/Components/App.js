@@ -338,6 +338,12 @@ export class App extends React.Component {
                 attempt_json: attempt_json,
                 create_timestamp: now
             };
+            
+            if($LTI_VARS['lis_person_sourcedid']) {
+	            console.log('username is provided');
+	            attempt['student_name'] = $LTI_VARS['lis_person_sourcedid'];
+            }
+            
 
             client.post('/' + attemptTable, attempt, {
                 params: {
