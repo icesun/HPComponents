@@ -168,6 +168,6 @@ export const components_pdfstyles = {
 };
 
 export const tableWidths = {
-    c2: ['25%', '*', '*']
+    c2: ['*', '*', '*']
 };
 
