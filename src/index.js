@@ -14,7 +14,7 @@ export const client = axios.create({
     responseType: 'json'
 });
 
-//console.log('global', $LTI_VARS, $JWT_TOKEN);
+console.log('global', $LTI_VARS, $JWT_TOKEN);
 let condition1 = 'activity_id,eq,' + $ACTIVITY_ID;
 let condition2 = 'course_id,eq,' + $COURSE_ID;
 let condition3 = 'student_id,eq,' + $STUDENT_ID;
