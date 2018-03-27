@@ -1,7 +1,6 @@
-# CORPINN1x_VPC
+# buslead3x_workbook_tool
 
-This is a 'value prposition canvas' tool developed for UQx CORPINN1x.
-It will be multiple used in Module 4, Module 7 and Module 8.
+This is a work tool developed for UQx buslead3x.
 
 ## Get Started 
 
