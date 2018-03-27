@@ -25,11 +25,11 @@ export default class PdfTextArea extends React.Component {
     if(meta.extra) {
       var extra = [];
       if(meta.extra.label) {
-        extra.push(<label key={uuid.v4()}>{meta.extra.label}</label>);
+        extra.push(<label className='ta_label' key={uuid.v4()}>{meta.extra.label}</label>);
       }
 
       if(meta.extra.question) {
-        extra.push(<span key={uuid.v4()}>{meta.extra.question}</span>);
+        extra.push(<span className='ta_span' key={uuid.v4()}>{meta.extra.question}</span>);
       }
       var extra_div = (<div>{extra}</div>);
     }

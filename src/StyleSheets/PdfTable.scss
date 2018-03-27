@@ -5,8 +5,20 @@ $primary-height: 100;
     padding: 2px;
 }
 
+.pdftable {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .th_first {
     font-size: 16px;
     font-weight: bold;
+    padding: 15px;
+}
+
+.th_second {
+    font-size: 14px;
+    font-weight: bold;
+    width: 25%;
 }
 

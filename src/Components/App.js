@@ -254,7 +254,7 @@ export class App extends React.Component {
         
         switch(item.type) {
             case 'NormalTD': 
-                if(item.pdfClass) {
+                if(item.pdf_style) {
                     pdfTD = {};
                     pdfTD['text'] = item.text;
                     pdfTD['style'] = item.pdf_style;
@@ -270,6 +270,7 @@ export class App extends React.Component {
 
         }
 
+        //console.log('pdfTD', pdfTD);
         return pdfTD;
     }
 

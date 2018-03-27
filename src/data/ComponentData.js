@@ -14,7 +14,7 @@ export const components = [
         tag: 'p',
         classes: 'header1',
         pdf_style: 'header1',
-        text: 'Value Proposition Canvas',
+        text: 'Cultural levers',
     },
     {
         type: 'StringComponent',
@@ -24,69 +24,21 @@ export const components = [
         text: '',
 
     },
+    //Problem and goal Textarea
     {
-        type: 'StringComponent',
-        tag: 'p',
-        classes: 'header_blue',
-        pdf_style: 'headerline',
-        text: 'Value Proposition',
+        id: 'problem_or_goal',
+        type: 'PdfTextArea',
+        classes: "form-control pdftextarea ta_medium",
+        div_classes: "form-group",       
+        extra: {
+            label: 'What is the problem or goal?',
+            question: 'Current situation: What is happening now; what is problematic?  Desired future: What is the business need; What does the context/strategy call for?',
+        }        
     },
 
-    // Value Proposition Table
+    //Lever Table
     {
-        id: 'value_proposition',
-        type: 'PdfTable',
-        classes: "table pdftable table-noborder",
-        div_classes: "form-group table-responsive",
-        tr_arr: [
-            {
-                classes: 'tr_header',
-                td_arr: [
-                    {type: 'NormalTD', text: 'Products & Services', classes: 'th_first'},
-                    {type: 'NormalTD', text: 'Gain Creators', classes: 'th_first'},
-                    {type: 'NormalTD', text: 'Pain Relievers', classes: 'th_first'},
-                ]                
-            },
-            {
-                classes: 'tr_header',
-                td_arr: [
-                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
-                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
-                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
-                ]                
-            },
-            {
-                td_arr: [
-                    {type: 'EmbededTD', classes: 'td_embed', 
-                        embed: [
-                            {id: 'value_products_services', type: 'PdfTextArea', classes: 'form-control embed_ta'}
-                        ]
-                    },
-                    {type: 'EmbededTD', classes: 'td_embed', 
-                        embed: [
-                            {id: 'value_gain_creators', type: 'PdfTextArea', classes: 'form-control embed_ta'}
-                        ]
-                    },
-                    {type: 'EmbededTD', classes: 'td_embed', 
-                        embed: [
-                            {id: 'value_pain_relievers', type: 'PdfTextArea', classes: 'form-control embed_ta'}
-                        ]
-                    },
-                ]                
-            }
-        ],
-    },
-
-    {
-        type: 'StringComponent',
-        tag: 'p',
-        classes: 'header_yellow',
-        text: 'Customer Segment',
-    },
-
-    //Customer Segment Table
-    {
-        id: 'customer_segment',
+        id: 'lever_table',
         type: 'PdfTable',
         classes: "table pdftable",
         div_classes: "form-group table-responsive",
@@ -94,40 +46,133 @@ export const components = [
             {
                 classes: 'tr_header',
                 td_arr: [
-                    {type: 'NormalTD', text: 'Customer Job(s)', classes: 'th_first'},
-                    {type: 'NormalTD', text: 'Gains', classes: 'th_first'},
-                    {type: 'NormalTD', text: 'Pains', classes: 'th_first'},
-                ]                
-            },
-            {
-                classes: 'tr_header',
-                td_arr: [
-                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
-                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
-                    {type: 'NormalTD', text: 'Questions to guide response', classes: 'th_second'},
-                ]                
+                    {type: 'NormalTD', text: 'Lever', classes: 'th_first', pdf_style: 'th_first'},
+                    {type: 'NormalTD', text: 'What’s happening now?', classes: 'th_first', pdf_style: 'th_first'},
+                    {type: 'NormalTD', text: 'What could you do?', classes: 'th_first', pdf_style: 'th_first'},
+                ]                                
             },
             {
                 td_arr: [
+                    {type: 'NormalTD', text: 'Leadership commitment (What’s modelled)', classes: 'th_second'},
                     {type: 'EmbededTD', classes: 'td_embed', 
                         embed: [
-                            {id: 'customer_customer_jobs', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                            {id: 'lever_table_1_1', type: 'PdfTextArea', classes: 'form-control embed_ta'}
                         ]
                     },
                     {type: 'EmbededTD', classes: 'td_embed', 
                         embed: [
-                            {id: 'customer_gains', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                            {id: 'lever_table_1_2', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    }                   
+                ]
+            },
+            {
+                td_arr: [
+                    {type: 'NormalTD', text: 'Values & behaviours (What’s expected)', classes: 'th_second'},
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_2_1', type: 'PdfTextArea', classes: 'form-control embed_ta'}
                         ]
                     },
                     {type: 'EmbededTD', classes: 'td_embed', 
                         embed: [
-                            {id: 'customer_pains', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                            {id: 'lever_table_2_2', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    }                   
+                ]
+            },
+            {
+                td_arr: [
+                    {type: 'NormalTD', text: 'Workforce capabilities (Who’s equipped)', classes: 'th_second'},
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_3_1', type: 'PdfTextArea', classes: 'form-control embed_ta'}
                         ]
                     },
-                ]                
-            }
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_3_2', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    }                   
+                ]
+            },
+            {
+                td_arr: [
+                    {type: 'NormalTD', text: 'Recognition & consequences (What’s reinforced)', classes: 'th_second'},
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_4_1', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    },
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_4_2', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    }                   
+                ]
+            },
+            {
+                td_arr: [
+                    {type: 'NormalTD', text: 'Practices & procedures (What’s habitual)', classes: 'th_second'},
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_5_1', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    },
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_5_2', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    }                   
+                ]
+            },
+            {
+                td_arr: [
+                    {type: 'NormalTD', text: 'Underpinning structures (What enables)', classes: 'th_second'},
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_6_1', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    },
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_6_2', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    }                   
+                ]
+            },
+            {
+                td_arr: [
+                    {type: 'NormalTD', text: 'Monitor & evolve (What’s measured)', classes: 'th_second'},
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_7_1', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    },
+                    {type: 'EmbededTD', classes: 'td_embed', 
+                        embed: [
+                            {id: 'lever_table_7_2', type: 'PdfTextArea', classes: 'form-control embed_ta'}
+                        ]
+                    }                   
+                ]
+            },
+
         ],
-    },    
+    },
+
+    //Action Textarea
+    {
+        id: 'actions',
+        type: 'PdfTextArea',
+        //input: 'YES',
+        classes: "form-control pdftextarea ta_medium",
+        div_classes: "form-group",       
+        extra: {
+            label: 'Action you can take?',
+            question: '(Clarify business need; Further investigation to identify levers in play; Explore areas where levers are having different impact; Other…)',
+        }
+        
+    },  
 
     {
         id: 'c4',
@@ -164,10 +209,15 @@ export const components_pdfstyles = {
     },
     headerline: {
         fontSize: 16,
+    },
+    th_first: {
+        fontSize: 14,
+        bold: true,
     }
 };
 
 export const tableWidths = {
-    c2: ['*', '*', '*']
+    //decide the width of columns of the table. the property name has to coincide with the table id
+    lever_table: ['25%', '*', '*']
 };
 
