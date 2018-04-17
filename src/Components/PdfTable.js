@@ -35,13 +35,27 @@ export default class PdfTable extends React.Component {
             data = {this.props.data}
           />
         );
+        
+      case 'ul':
+        
+        var listItems = meta.list.map((list_text, i) => {
+	       var list_key = createKey(list_text, i, key);
+	       //console.log('key', list_text, i, key, list_key);
+	       return (
+		     <li key={list_key}>{list_text}</li>  
+	       ); 
+        });
+
+        //console.log('ul', meta, i, prefix, key, listItems);
+        
+        return (
+	        <ul className={meta.classes} key={key}>{listItems}</ul>
+        );
 
       //Other types AA
       //case AA:
       //return  
     }
-
-
   }
 
 
@@ -54,13 +68,19 @@ export default class PdfTable extends React.Component {
       case 'NormalTD':
         tdContent = meta.text;
       break;
-
+      
+      case 'HTMLTD':
+      	tdContent = <div className='htmlTD' dangerouslySetInnerHTML={{__html: meta.html}}></div>;
+      	break;
+      	
       case 'EmbededTD':
         tdContent = meta.embed.map((x, i) => { return this.createEmbed(x, i, key); });
       break;
 
     }
 
+
+      	//console.log('td', tdContent);
 
     return (<td key={key} class={meta.classes}>{tdContent}</td>);
   }

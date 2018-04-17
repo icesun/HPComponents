@@ -136,6 +136,7 @@ export class App extends React.Component {
 
                 case 'PdfTable':
                     return this.pdfTable(item);
+                    //return '';
         
 
                 case 'StringComponent':
@@ -225,18 +226,23 @@ export class App extends React.Component {
 
     pdfEmbed(item) {
 
-        var pdfEmbed;
+        var pdfEmbed ={};
 
         switch(item.type) {
             case 'PdfTextArea':
                 if(item.pdfClass) {
-                    pdfEmbed = {};
+                    //pdfEmbed = {};
                     pdfEmbed['text'] = this.state.inputAttempt[item.id];
                     pdfEmbed['style'] = item.pdf_style;
                 }
                 else {
                     this.state.inputAttempt[item.id] ? pdfEmbed = this.state.inputAttempt[item.id] : pdfEmbed = '';
                 }
+            break;
+            
+            case 'ul':
+            	//without pdfClass
+            	pdfEmbed['ul'] =  item.list;            	
             break;
                 
         }
@@ -250,18 +256,27 @@ export class App extends React.Component {
     pdfTD(item) {
         //console.log('td', item);
 
-        var pdfTD;
+        var pdfTD = {};
         
         switch(item.type) {
             case 'NormalTD': 
                 if(item.pdf_style) {
-                    pdfTD = {};
                     pdfTD['text'] = item.text;
                     pdfTD['style'] = item.pdf_style;
                 }
                 else {
                     pdfTD = item.text;
                 }
+            break;
+            
+            case 'HTMLTD':
+            	//without pdfClass
+            	if(item.text) {
+	            	pdfTD = item.text;
+            	}
+            	else {
+	            	pdfTD = item.html;
+            	}
             break;
 
             case 'EmbededTD':
@@ -270,7 +285,6 @@ export class App extends React.Component {
 
         }
 
-        //console.log('pdfTD', pdfTD);
         return pdfTD;
     }
 
@@ -472,11 +486,9 @@ export class App extends React.Component {
 
 
         return (
-          <div className="container">
             <div>
                 {renderComponents} 
             </div>
-          </div>
         );
     }
 }
