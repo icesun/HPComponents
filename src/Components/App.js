@@ -27,6 +27,18 @@ export function createKey(meta, index = 0, prefix = '') {
     return uuid.v4();
 }
 
+function nameDatetime(prefix) {
+
+    var now = new Date();
+    var nowString = now.getFullYear() + '-' + now.getMonth() + '-' +  now.getDate() + '-' + now.getHours() + '-' + now.getMinutes() + '-' + now.getSeconds();
+
+    console.log('name', nowString);
+
+    return prefix + '_' + nowString;
+}
+
+
+
 export class App extends React.Component {
     constructor(props){
         super(props);
@@ -167,9 +179,12 @@ export class App extends React.Component {
         }
     
         console.log('docDefinition', docDefinition);
-        pdfMake.createPdf(docDefinition).download();
+
+        var filename = nameDatetime('buslead3x_cultural_levers') + '.pdf';
+        pdfMake.createPdf(docDefinition).download(filename);
 
     }
+
 
     pdfStringComponent(item) {
         var pdfStringComponent = {};
