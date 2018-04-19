@@ -38,7 +38,6 @@ function nameDatetime(prefix) {
 }
 
 
-
 export class App extends React.Component {
     constructor(props){
         super(props);
@@ -46,6 +45,7 @@ export class App extends React.Component {
         this.state = {};
         this.state.dbAttempt = props.dbAttempt;
         props.dbAttempt.attempt_json ? this.state.inputAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.inputAttempt = {};
+        this.state.comment = '';
 
         
 
@@ -73,7 +73,8 @@ export class App extends React.Component {
 
 
     componentWillMount(){
-        console.log("Layout component will mount")
+        console.log("Layout component will mount");
+        
 
     }
     componentDidMount(){
@@ -85,6 +86,7 @@ export class App extends React.Component {
 
     handleChange(event) {
         //console.log('handle changes...', event.target.dataset.key);
+        this.setState({comment: ''});
 
 
         switch(event.target.type) {
@@ -106,10 +108,12 @@ export class App extends React.Component {
         switch(action) {
             case 'saveDB':
                 this.saveDB();
+                this.setState({comment: 'Thank you for your submission.'});
             break;
             
             case 'downloadPDF':
                 this.downloadPDF();
+                this.setState({comment: ''});
             break;
 
             default: 
@@ -121,24 +125,6 @@ export class App extends React.Component {
         console.log('downloadPDF', this.state);
 
         var docDefinition = {};
-
-        /*
-        var pdf_title = {};
-        if(title) {
-            pdf_title = {
-                text: title,
-                style: 'header',
-            }
-        }
-
-        var pdf_api_msg = {};
-        if(api_msg) {
-            pdf_api_msg = {
-                text: api_msg,
-                style: 'api_msg',
-            }
-        }
-        */
 
         let pdfContent = components.map(item => {
 
@@ -165,7 +151,6 @@ export class App extends React.Component {
 
         });
 
-//        docDefinition['content'] = [ pdf_title,  pdf_api_msg, ...pdfContent];
         docDefinition['content'] = pdfContent;
         docDefinition['styles'] = components_pdfstyles;
 
@@ -184,7 +169,6 @@ export class App extends React.Component {
         pdfMake.createPdf(docDefinition).download(filename);
 
     }
-
 
     pdfStringComponent(item) {
         var pdfStringComponent = {};
@@ -257,7 +241,7 @@ export class App extends React.Component {
             
             case 'ul':
             	//without pdfClass
-            	pdfEmbed['ul'] =  item.list;            	
+            	pdfEmbed['ul'] =  item.list.slice();            	
             break;
                 
         }
@@ -422,7 +406,7 @@ export class App extends React.Component {
     rendercomponents() {
 
         let renderComponents = components.map(item => {
-            //console.log('comp', item);
+            console.log('comp', item);
 
             switch(item.type) {
                 case 'PdfTextArea':
@@ -503,6 +487,7 @@ export class App extends React.Component {
         return (
             <div>
                 {renderComponents} 
+                <span className='span-description'><i>{this.state.comment}</i></span>
             </div>
         );
     }

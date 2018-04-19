@@ -1,6 +1,7 @@
 import '../StyleSheets/PdfTable.scss'
 import '../StyleSheets/PdfTextArea.scss'
 import '../StyleSheets/StringComponent.scss'
+import '../StyleSheets/Button.scss'
 
 /** 
  *  1. Input components have to HAVE ID

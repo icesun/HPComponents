@@ -26,6 +26,8 @@ export default class PdfTable extends React.Component {
   createEmbed(meta, i, prefix) {
     var key = createKey(meta, i, prefix);
 
+//    console.log('key', key);
+
     switch(meta.type) {
       case 'PdfTextArea':
         return (
@@ -37,16 +39,14 @@ export default class PdfTable extends React.Component {
         );
         
       case 'ul':
-        
-        var listItems = meta.list.map((list_text, i) => {
-	       var list_key = createKey(list_text, i, key);
-	       //console.log('key', list_text, i, key, list_key);
-	       return (
-		     <li key={list_key}>{list_text}</li>  
-	       ); 
-        });
 
-        //console.log('ul', meta, i, prefix, key, listItems);
+        var listItems = meta.list.map((list_text, i) => {
+          var list_key = createKey(list_text, i, key);
+	          return (
+  		        <li key={list_key}>{list_text}</li>  
+	          ); 
+        });
+        //console.log('list items', meta, listItems);
         
         return (
 	        <ul className={meta.classes} key={key}>{listItems}</ul>
@@ -56,6 +56,10 @@ export default class PdfTable extends React.Component {
       //case AA:
       //return  
     }
+
+    return (
+      <div className="other_embed"></div>
+    );
   }
 
 
