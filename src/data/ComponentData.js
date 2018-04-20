@@ -15,7 +15,7 @@ export const components = [
         tag: 'p',
         classes: 'header1',
         pdf_style: 'header1',
-        text: 'Cultural levers',
+        text: 'Analyse your team with an SWOT Analysis',
     },
     {
         type: 'StringComponent',

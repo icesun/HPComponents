@@ -1,5 +1,5 @@
 {
-  "name": "buslead3x_workbook_tool",
+  "name": "buslead3x_swot",
   "version": "0.0.1",
   "description": "This is a workbook tool developed for UQx buslead3x.",
   "main": "index.php",
@@ -18,14 +18,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UQ-UQx/buslead3x_workbook_tool.git"
+    "url": "git+https://github.com/UQ-UQx/buslead3x_swot.git"
   },
   "author": "Sai Sun",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/UQ-UQx/buslead3x_workbook_tool.git/issues"
+    "url": "https://github.com/UQ-UQx/buslead3x_swot.git/issues"
   },
-  "homepage": "https://github.com/UQ-UQx/buslead3x_workbook_tool.git#readme",
+  "homepage": "https://github.com/UQ-UQx/buslead3x_swot.git#readme",
   "devDependencies": {
     "ajv": "^6.3.0",
     "babel-cli": "^6.24.0",
