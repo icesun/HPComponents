@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import { App } from "./Components/App"
 
-
+/* attempt table name */
 export const attemptTable = 'Attempts';
 
 export const client = axios.create({
