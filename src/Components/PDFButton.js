@@ -4,6 +4,7 @@ import HPText from './HPText'
 
 
 import { pdfstyles } from '../data/ComponentData'
+import HPTextarea from './HPTextarea';
 
 function nameDatetime(prefix) {
 
@@ -42,6 +43,9 @@ export default class PDFButton extends React.Component {
             switch(component.type) {
                 case 'HPText':
                     return HPText.printPDF(component);
+
+                case 'HPTextarea':
+                    return HPTextarea.printPDF(component, data);
             }
 
         });

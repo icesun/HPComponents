@@ -23,7 +23,26 @@ export class App extends React.Component {
         this.state.dbAttempt = props.dbAttempt;
         props.dbAttempt.attempt_json ? this.state.inputAttempt = JSON.parse(props.dbAttempt.attempt_json) : this.state.inputAttempt = {};
         this.state.comment = '';
+
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(event) {
+        //console.log('handle changes...', event.target.dataset.key);
+        this.setState({comment: ''});
+
+
+        switch(event.target.type) {
+            case 'textarea':
+
+                this.setState({
+                    inputAttempt: {...this.state.inputAttempt, [event.target.dataset.key]:event.target.value}
+                })
+            break;
+
+        }
+    }
+    
 
     render() {
         console.log('App', this.props, this.state);
@@ -35,6 +54,7 @@ export class App extends React.Component {
                 key='pc1'
                 components = {components}
                 data = {this.state.inputAttempt}
+                handleChange = {this.handleChange}
             />
 
             {/* Button should be outside components -- more flexible */}

@@ -1,7 +1,11 @@
 import React from 'react'
 
 import HPText from './HPText'
+import HPTextarea from './HPTextarea'
+
+
 import { createKey } from './Tools'
+import { timingSafeEqual } from 'crypto';
 
 
 
@@ -23,9 +27,12 @@ export default class RenderComponents extends React.Component {
                     return (
                         <HPText key={key} meta={component} />
                     );
+
+                case 'HPTextarea':
+                    return (
+                        <HPTextarea key={key} meta={component} data={data} handleChange={this.props.handleChange}/>
+                    );
             }
-
-
 
         });
 

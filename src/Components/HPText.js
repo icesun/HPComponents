@@ -10,12 +10,20 @@ export default class HPText extends React.Component {
 
         var pdf = component.text_arr.map(item => {
             //console.log('item', item);
-            if(item.pdf_style != 'none') {
-                return {text: item.text, style: item.pdf_style}
-            }
-            else {
+            if(item.pdf_style == 'none') {
                 return '';
             }
+
+            switch(item.type) {
+                case 'p':
+                case 'html':
+                    return {text: item.text + '\n\n', style: item.pdf_style};
+                
+                case 'span':
+                    return {text: item.text, style: item.pdf_style};
+            }
+
+            return '';
         });
 
         //console.log('pdf', pdf);

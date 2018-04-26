@@ -5,7 +5,7 @@
  *  3. ID has to be unique
  *  4. classes should be strings concated with space
  *  5. pdf_style should be a string or an array of strings or 'none' which means not print to pdf
- *  6. Every HPText should BE and ONLY BE a block. types in text_arr, 'p', 'span', 'html'. the 'html' type has to have 'html' and 'text' attribute
+ *  6. HPText -- types in text_arr, 'p', 'span', 'html'. the 'html' type has to have 'html' and 'text' attribute
  * 
  * 
  */
@@ -54,8 +54,105 @@ export const components = [
             },
         ]
     },
+    // Try Textarea
+    {
+        type: 'HPTextarea',
+        classes: 'form-group',
+        extra: {
+            type: 'HPText',
+            pdf_style: 'smallMarginBottom',
+            text_arr: [
+                {
+                    type: 'p',
+                    classes: '',
+                    pdf_style: '',
+                    text: 'This is a test',
+                }
+            ]
+        },
+        body: {
+            id: 'textarea_1',
+            classes: 'form-control',
+            pdf_style: 'oneLine',
+            pdf_width: ['*'],
+            default_text: '',
+        }
+    },
+
+
+    //Table 1
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(1) Identify the Team Objective'
+            }
+        ]
+    },
+
+    //Table 2
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(2) Identify the Strengths'
+            }
+        ]
+    },
+
+    //Table 3
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(3) Identify the Weaknesses'
+            }
+        ]
+    },
+
+    //Table 4
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(4) Identify the Opportunities'
+            }
+        ]
+    },
+
+    //Table 5
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(5) Identify the Threats'
+            }
+        ]
+    },
+
 ];
 
 export const pdfstyles = {
+    oneLine: {
+        margin: [0, 10, 0, 20]
+    },
+    smallMarginBottom: {
+        marginBottom: -20
+    } 
 
 };
