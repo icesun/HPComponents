@@ -2,6 +2,7 @@ import React from 'react'
 
 import HPText from './HPText'
 import HPTextarea from './HPTextarea'
+import HPTable from './HPTable'
 
 
 import { createKey } from './Tools'
@@ -31,6 +32,11 @@ export default class RenderComponents extends React.Component {
                 case 'HPTextarea':
                     return (
                         <HPTextarea key={key} meta={component} data={data} handleChange={this.props.handleChange}/>
+                    );
+
+                case 'HPTable':
+                    return (
+                        <HPTable key={key} meta={component} data={data} handleChange={this.props.handleChange}/>
                     );
             }
 

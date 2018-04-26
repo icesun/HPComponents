@@ -1,7 +1,6 @@
 
 /** 
  *  1. Input components have to HAVE ID 
- *  2. First level components have to HAVE ID
  *  3. ID has to be unique
  *  4. classes should be strings concated with space
  *  5. pdf_style should be a string or an array of strings or 'none' which means not print to pdf
@@ -92,6 +91,116 @@ export const components = [
             }
         ]
     },
+    {
+        id: 'table1',
+        type: 'HPTable',
+        classes: 'table',
+        div_classes: "form-group table-responsive",
+        tr_arr: [
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'span',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'Focal Team: ',        
+                                    },
+                                    {
+                                        type: 'span',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'Describe a team or group that you currently (or recently) worked in.',        
+                                    },                                    
+                                ]
+                        
+                            },
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: '',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table1_focal_team',
+                                    classes: 'form-control',
+                                    pdf_style: 'oneLine',
+                                    pdf_width: ['*'],
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ]
+            }, 
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'span',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'Team Objective: ',        
+                                    },
+                                    {
+                                        type: 'span',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What is the issue or goal that the team would like to achieve or improve upon?',        
+                                    },                                    
+                                ]
+                        
+                            },
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: '',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table1_team_objective',
+                                    classes: 'form-control',
+                                    pdf_style: 'oneLine',
+                                    pdf_width: ['*'],
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ]
+            },
+        ],
+    },
 
     //Table 2
     {
@@ -105,6 +214,7 @@ export const components = [
             }
         ]
     },
+
 
     //Table 3
     {
