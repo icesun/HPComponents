@@ -14,6 +14,74 @@ export default class HPTable extends React.Component {
         this.createEmbeded = this.createEmbeded.bind(this);
     }
 
+    static printPDF(component, data) {
+        console.log('HPTable printPDF', component, data);
+        var output = {};
+
+        // bodyPDF is an array of trPDF
+        var bodyPDF = component.tr_arr.map((x, i) => {
+            return HPTable.printPDF_tr(x, i, data);
+        });
+
+        output.body = bodyPDF;
+
+        return {
+            style: component.pdf_style,
+            table: output
+        }        
+    }
+
+    static printPDF_tr(component, i, data) {
+        console.log('print tr', component, i, data);
+
+        // trPDF is an array of tdPDF
+        var trPDF = component.td_arr.map((x, i) => {
+            return HPTable.printPDF_td(x, i, data);
+
+        });
+
+        return trPDF;
+    }
+
+    static printPDF_td(component, i, data) {
+        console.log('print td', component, i, data);
+
+        var tdPDF = '';
+
+        // tdPDF can be an array or an object or a text
+        switch(component.type) {
+            case 'EmbededTD':
+                tdPDF = component.embeded_arr.map((x, i) => {
+                    return HPTable.printPDF_embeded(x, i, data);
+                });
+
+
+        }
+
+        console.log('tdPDF', tdPDF);
+
+        return {stack: tdPDF, style: component.pdf_style};
+
+
+        //return '';
+    }
+
+    static printPDF_embeded(component, i, data) {
+        console.log('print embeded', component, i, data);
+
+        switch(component.type) {
+            case 'HPText':
+                return HPText.printPDF(component);
+
+            case 'HPTextarea':
+                return HPTextarea.printPDF(component, data);
+
+
+        }
+
+        return '';
+    }
+
     createEmbeded(meta, i, prefix) {
         var key = createKey(meta, i, prefix);
 

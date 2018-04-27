@@ -2,9 +2,8 @@ import React from 'react'
 
 import HPText from './HPText'
 
-
-import { pdfstyles } from '../data/ComponentData'
 import HPTextarea from './HPTextarea';
+import HPTable from './HPTable';
 
 function nameDatetime(prefix) {
 
@@ -46,6 +45,13 @@ export default class PDFButton extends React.Component {
 
                 case 'HPTextarea':
                     return HPTextarea.printPDF(component, data);
+
+                case 'HPTable':
+                    return HPTable.printPDF(component, data);
+                    //return '';
+
+                default:
+                    return '';
             }
 
         });
@@ -53,7 +59,7 @@ export default class PDFButton extends React.Component {
         //console.log('pdfContent', pdfContent);
 
         docDefinition['content'] = pdfContent;
-        docDefinition['styles'] = pdfstyles;
+        docDefinition['styles'] = this.props.pdfstyles;
 
         docDefinition['footer'] = function(currentPage, pageCount) {
             var columns = [];

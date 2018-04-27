@@ -9,6 +9,7 @@ export default class HPTextarea extends React.Component {
     static printPDF(component, data) {
         var output = [];
 
+        // PDF extra
         if(component.extra) {
             switch(component.extra.type) {
                 case 'HPText':
@@ -17,20 +18,35 @@ export default class HPTextarea extends React.Component {
             }
         }
 
+        // PDF body
         var bodyId = component.body.id;
         var bodyText = '';
         if(data[bodyId]) {
             bodyText = data[bodyId];
         }
-        output.push({
-            style: component.body.pdf_style,
-            table: {
-                widths: component.body.pdf_width,
-                body: [
-                    [bodyText + '\n\n'],
-                ]
-            }
-        });
+        var bodyType = component.body.type;
+
+        switch(bodyType) {
+            case 'TA_Text':
+                output.push({
+                    style: component.body.pdf_style,
+                    text: bodyText,
+                });
+            break;
+
+            case 'TA_Table':
+            default:
+                output.push({
+                    style: component.body.pdf_style,
+                    table: {
+                        widths: component.body.pdf_width,
+                        body: [
+                            [bodyText + '\n\n'],
+                        ]
+                    }
+                });
+            break;
+        }
 
         return output;
     }

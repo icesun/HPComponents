@@ -5,7 +5,8 @@
  *  4. classes should be strings concated with space
  *  5. pdf_style should be a string or an array of strings or 'none' which means not print to pdf
  *  6. HPText -- types in text_arr, 'p', 'span', 'html'. the 'html' type has to have 'html' and 'text' attribute
- * 
+ *  7. HPTextarea -- types in body, 'TA_Table' (default), 'TA_Text'
+ *  8. HPTable -- tr_arr, td_arr should not have pdf_style (no use).
  * 
  */
 export const components = [
@@ -71,6 +72,7 @@ export const components = [
         },
         body: {
             id: 'textarea_1',
+            type: 'TA_Table',
             classes: 'form-control',
             pdf_style: 'oneLine',
             pdf_width: ['*'],
@@ -82,6 +84,7 @@ export const components = [
     //Table 1
     {
         type: 'HPText',
+        pdf_style: 'smallMarginBottom',
         text_arr: [
             {
                 type: 'p',
@@ -96,6 +99,7 @@ export const components = [
         type: 'HPTable',
         classes: 'table',
         div_classes: "form-group table-responsive",
+        pdf_style: 'paraMarginBottom',
         tr_arr: [
             {
                 classes: 'tr_header',
@@ -109,8 +113,8 @@ export const components = [
                                 text_arr: [
                                     {
                                         type: 'span',
-                                        classes: '',
-                                        pdf_style: '',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
                                         text: 'Focal Team: ',        
                                     },
                                     {
@@ -132,15 +136,16 @@ export const components = [
                     {
                         type: 'EmbededTD',
                         classes: '',
+                        pdf_style: 'blueTD',
                         embeded_arr: [
                             {
                                 type: 'HPTextarea',
                                 classes: '',
                                 body: {
                                     id: 'table1_focal_team',
+                                    type: 'TA_Text',
                                     classes: 'form-control',
                                     pdf_style: 'oneLine',
-                                    pdf_width: ['*'],
                                     default_text: '',
                                 }
                             }
@@ -154,13 +159,14 @@ export const components = [
                     {
                         type: 'EmbededTD',
                         classes: '',
+                        pdf_style: 'blueTD',
                         embeded_arr: [
                             {
                                 type: 'HPText',
                                 text_arr: [
                                     {
                                         type: 'span',
-                                        classes: '',
+                                        classes: 'span_label',
                                         pdf_style: '',
                                         text: 'Team Objective: ',        
                                     },
@@ -189,9 +195,9 @@ export const components = [
                                 classes: '',
                                 body: {
                                     id: 'table1_team_objective',
+                                    type: 'TA_Text',
                                     classes: 'form-control',
                                     pdf_style: 'oneLine',
-                                    pdf_width: ['*'],
                                     default_text: '',
                                 }
                             }
@@ -256,13 +262,3 @@ export const components = [
     },
 
 ];
-
-export const pdfstyles = {
-    oneLine: {
-        margin: [0, 10, 0, 20]
-    },
-    smallMarginBottom: {
-        marginBottom: -20
-    } 
-
-};

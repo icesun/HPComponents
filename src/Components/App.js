@@ -4,6 +4,10 @@ import uuid from "uuid"
 //import { attemptTable, client } from "../index"
 //import { components, components_pdfstyles } from '../data/ComponentData'
 import { components } from '../data/ComponentData'
+import { pdfstyles } from '../data/PDFStyles'
+
+import '../StyleSheets/Custom.scss'
+
 
 
 import RenderComponents from "./RenderComponents"
@@ -62,6 +66,7 @@ export class App extends React.Component {
             <PDFButton
                 meta = {PDFButtonMeta}
                 components = {components}
+                pdfstyles = {pdfstyles}
                 data = {this.state.inputAttempt}
             />
 
