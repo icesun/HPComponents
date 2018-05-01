@@ -58,9 +58,11 @@ export default class HPTable extends React.Component {
 
         }
 
-        console.log('tdPDF', tdPDF);
+        //console.log('tdPDF', tdPDF);
 
+        /* text remove inside pdf_style of space such as margin. so I use 'stack' here.  */
         return {stack: tdPDF, style: component.pdf_style};
+        //return tdPDF
 
 
         //return '';

@@ -167,7 +167,7 @@ export const components = [
                                     {
                                         type: 'span',
                                         classes: 'span_label',
-                                        pdf_style: '',
+                                        pdf_style: 'spanLabel',
                                         text: 'Team Objective: ',        
                                     },
                                     {

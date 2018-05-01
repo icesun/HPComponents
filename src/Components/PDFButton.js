@@ -30,7 +30,6 @@ export default class PDFButton extends React.Component {
 
     handleClick(e) {
         console.log('PDFButton Clicked', e, this.props);
-        this.setState({comment: 'xxxx'});
 
         var components = this.props.components;
         var data = this.props.data;
@@ -74,7 +73,7 @@ export default class PDFButton extends React.Component {
 
         var filename = nameDatetime(courseName) + '.pdf';
         pdfMake.createPdf(docDefinition).download(filename);
-
+        this.props.setStateComment('');
     }
 
 
@@ -84,7 +83,7 @@ export default class PDFButton extends React.Component {
 
 
     render() {
-        console.log('PDFButton props', this.props, this.state);
+        console.log('PDFButton props', this.props);
         var disabled = '';
 
         var meta = this.props.meta;
