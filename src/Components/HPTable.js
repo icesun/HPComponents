@@ -2,6 +2,7 @@ import React from 'react'
 
 import HPText from './HPText'
 import HPTextarea from './HPTextarea'
+import HPList from './HPList';
 
 import { createKey } from './Tools'
 
@@ -54,18 +55,15 @@ export default class HPTable extends React.Component {
                 tdPDF = component.embeded_arr.map((x, i) => {
                     return HPTable.printPDF_embeded(x, i, data);
                 });
+                /* text remove inside pdf_style of space such as margin. so I use 'stack' here.  */
+                return {stack: tdPDF, style: component.pdf_style};
+
+            case 'TextTD':
+                return {text: component.text, style: component.pdf_style}
 
 
         }
 
-        //console.log('tdPDF', tdPDF);
-
-        /* text remove inside pdf_style of space such as margin. so I use 'stack' here.  */
-        return {stack: tdPDF, style: component.pdf_style};
-        //return tdPDF
-
-
-        //return '';
     }
 
     static printPDF_embeded(component, i, data) {
@@ -78,6 +76,8 @@ export default class HPTable extends React.Component {
             case 'HPTextarea':
                 return HPTextarea.printPDF(component, data);
 
+            case 'HPList':
+                return HPList.printPDF(component);
 
         }
 
@@ -97,6 +97,11 @@ export default class HPTable extends React.Component {
                 return (
                     <HPTextarea key={key} meta={meta} data={this.props.data} handleChange={this.props.handleChange}/>
                 );
+
+            case 'HPList':
+                return (
+                    <HPList key={key} meta={meta} prefix={key} />
+                );
         }
 
         return (
@@ -115,6 +120,10 @@ export default class HPTable extends React.Component {
                 tdContent = meta.embeded_arr.map((x, i) => {
                     return this.createEmbeded(x, i, key);
                 });
+            break;
+
+            case 'TextTD':
+                tdContent = meta.text;
             break;
         }
 

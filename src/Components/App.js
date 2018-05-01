@@ -129,6 +129,7 @@ export class App extends React.Component {
     
     render() {
         console.log('App', this.props, this.state);
+        //var Nn = 'ol';
 
 
         return (
@@ -144,7 +145,7 @@ export class App extends React.Component {
             {/* DBButton does related to components. Only related to this.state  */}
             <DBButton
                 meta = {DBButtonMeta}
-                data = {this.state.inputAttempt}
+                data = {this.state}
                 handleClick = {this.saveDB}
             />
 
@@ -153,12 +154,19 @@ export class App extends React.Component {
                 meta = {PDFButtonMeta}
                 components = {components}
                 pdfstyles = {pdfstyles}
-                data = {this.state.inputAttempt}
+                data = {this.state}
                 setStateComment = {this.setStateComment}
             />
 
             {/* Span for Comment */}
             <span className='span-comment'><i>{this.state.comment}</i></span>
+
+            {/*
+            <Nn>
+                <li>apple</li>
+                <li>banana</li>
+            </Nn>
+            */}
           </div>
         );
     }

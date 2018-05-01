@@ -1,9 +1,9 @@
 import React from 'react'
 
 import HPText from './HPText'
-
 import HPTextarea from './HPTextarea';
 import HPTable from './HPTable';
+import HPList from './HPList';
 
 function nameDatetime(prefix) {
 
@@ -32,7 +32,7 @@ export default class PDFButton extends React.Component {
         console.log('PDFButton Clicked', e, this.props);
 
         var components = this.props.components;
-        var data = this.props.data;
+        var data = this.props.data.inputAttempt;
 
         var docDefinition = {};
 
@@ -47,7 +47,9 @@ export default class PDFButton extends React.Component {
 
                 case 'HPTable':
                     return HPTable.printPDF(component, data);
-                    //return '';
+
+                case 'HPList':
+                    return HPList.printPDF(component);
 
                 default:
                     return '';
@@ -84,10 +86,14 @@ export default class PDFButton extends React.Component {
 
     render() {
         console.log('PDFButton props', this.props);
-        var disabled = '';
-
         var meta = this.props.meta;
-
+        var data = this.props.data;
+        
+        var disabled = '';
+        if(data.dbAttempt.attempt_json != JSON.stringify(data.inputAttempt))  {
+              disabled = 'disabled';
+        }
+       
         return (<button className={meta.classes} onClick={this.handleClick} disabled={disabled}>{meta.value}</button>);
     }
 }

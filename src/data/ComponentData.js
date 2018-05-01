@@ -80,6 +80,20 @@ export const components = [
         }
     },
 
+    // Try HPList
+    {
+        type: 'HPList',
+        classes: '',
+        div_classes: '',
+        pdf_style: '',
+        tag: 'ul',
+        list: [
+            'What specific tasks are your customers trying to perform?',
+            'What problems are they trying to solve?',
+            'What needs do they have?',
+        ]
+    },
+
 
     //Table 1
     {
@@ -162,22 +176,16 @@ export const components = [
                         pdf_style: 'blueTD',
                         embeded_arr: [
                             {
-                                type: 'HPText',
-                                text_arr: [
-                                    {
-                                        type: 'span',
-                                        classes: 'span_label',
-                                        pdf_style: 'spanLabel',
-                                        text: 'Team Objective: ',        
-                                    },
-                                    {
-                                        type: 'span',
-                                        classes: '',
-                                        pdf_style: '',
-                                        text: 'What is the issue or goal that the team would like to achieve or improve upon?',        
-                                    },                                    
+                                type: 'HPList',
+                                classes: '',
+                                div_classes: '',
+                                pdf_style: '',
+                                tag: 'ul',
+                                list: [
+                                    'What specific tasks are your customers trying to perform?',
+                                    'What problems are they trying to solve?',
+                                    'What needs do they have?',
                                 ]
-                        
                             },
                         ]
                     },

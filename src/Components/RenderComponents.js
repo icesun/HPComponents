@@ -3,6 +3,7 @@ import React from 'react'
 import HPText from './HPText'
 import HPTextarea from './HPTextarea'
 import HPTable from './HPTable'
+import HPList from './HPList'
 
 
 import { createKey } from './Tools'
@@ -38,6 +39,12 @@ export default class RenderComponents extends React.Component {
                     return (
                         <HPTable key={key} meta={component} data={data} handleChange={this.props.handleChange}/>
                     );
+
+                case 'HPList':
+                    return (
+                        <HPList key={key} meta={component} />
+                    );
+
             }
 
         });
