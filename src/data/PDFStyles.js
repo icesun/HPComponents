@@ -14,7 +14,7 @@ export const pdfstyles = {
 
 
     /* HPTable */
-    blueTD: {
+    exampleTD: {
         fillColor: '#eeeeee',
     },
 

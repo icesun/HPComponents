@@ -54,46 +54,6 @@ export const components = [
             },
         ]
     },
-    // Try Textarea
-    {
-        type: 'HPTextarea',
-        classes: 'form-group',
-        extra: {
-            type: 'HPText',
-            pdf_style: 'smallMarginBottom',
-            text_arr: [
-                {
-                    type: 'p',
-                    classes: '',
-                    pdf_style: '',
-                    text: 'This is a test',
-                }
-            ]
-        },
-        body: {
-            id: 'textarea_1',
-            type: 'TA_Table',
-            classes: 'form-control',
-            pdf_style: 'oneLine',
-            pdf_width: ['*'],
-            default_text: '',
-        }
-    },
-
-    // Try HPList
-    {
-        type: 'HPList',
-        classes: '',
-        div_classes: '',
-        pdf_style: '',
-        tag: 'ul',
-        list: [
-            'What specific tasks are your customers trying to perform?',
-            'What problems are they trying to solve?',
-            'What needs do they have?',
-        ]
-    },
-
 
     //Table 1
     {
@@ -173,19 +133,24 @@ export const components = [
                     {
                         type: 'EmbededTD',
                         classes: '',
-                        pdf_style: 'blueTD',
                         embeded_arr: [
                             {
-                                type: 'HPList',
-                                classes: '',
-                                div_classes: '',
-                                pdf_style: '',
-                                tag: 'ul',
-                                list: [
-                                    'What specific tasks are your customers trying to perform?',
-                                    'What problems are they trying to solve?',
-                                    'What needs do they have?',
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'span',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Team Objective: ',        
+                                    },
+                                    {
+                                        type: 'span',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What is the issue or goal that the team would like to achieve or improve upon?',        
+                                    },                                    
                                 ]
+                        
                             },
                         ]
                     },
@@ -228,6 +193,359 @@ export const components = [
             }
         ]
     },
+    {
+        id: 'table2',
+        type: 'HPTable',
+        classes: 'table',
+        div_classes: "form-group table-responsive",
+        pdf_style: 'paraMarginBottom',
+        tr_arr: [
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        text: '',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Strengths',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What are your current team’s strengths?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Preserve and Protect',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What actions will we need to take to preserve and protect those current strengths?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Prevent',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'How can we prevent slippage of existing strengths?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: 'tr_example',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'e.g.',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Knowledgeable and adaptable employees',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Update Workforce Development Plan',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Pay skilled employees better than competition',
+                    },
+
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '1',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_1_strengths',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_1_preserve_protect',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_1_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '2',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_2_strengths',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_2_preserve_protect',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_2_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '3',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_3_strengths',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_3_preserve_protect',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_3_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '4',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_4_strengths',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_4_preserve_protect',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table2_4_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+        ],        
+    },
 
 
     //Table 3
@@ -242,6 +560,362 @@ export const components = [
             }
         ]
     },
+    {
+        id: 'table3',
+        type: 'HPTable',
+        classes: 'table',
+        div_classes: "form-group table-responsive",
+        pdf_style: 'paraMarginBottom',
+        tr_arr: [
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        text: '',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Weaknesses',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What are your current team’s weaknesses?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Mitigate',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What can mitigate these weaknesses, to reduce their power or influence?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Overcome',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What would it take to overcome the weaknesses?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: 'tr_example',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'e.g.',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Employees leave for better opportunities',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Promote from within',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Grow the organization so more opportunities are available',
+                    },
+
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '1',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_1_weakness',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_1_mitigate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_1_overcome',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '2',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_2_weakness',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_2_mitigate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_2_overcome',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '3',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_3_weakness',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_3_mitigate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_3_overcome',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '4',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_4_weakness',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_4_mitigate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table3_4_overcome',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+        ],        
+    },
+
+
+
 
     //Table 4
     {
@@ -255,6 +929,361 @@ export const components = [
             }
         ]
     },
+    {
+        id: 'table4',
+        type: 'HPTable',
+        classes: 'table',
+        div_classes: "form-group table-responsive",
+        pdf_style: 'paraMarginBottom',
+        tr_arr: [
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        text: '',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Opportunities',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What are the opportunities currently available to your team?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Capitalize',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'How can we capitalize on the opportunities?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Enhance',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What strategies can we design that will enhance those opportunities?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: 'tr_example',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'e.g.',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Customers dissatisfied with rival products',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Better monitor customer needs',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Adopt a customer-centric strategy as a point of difference',
+                    },
+
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '1',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_1_opportunities',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_1_capitalize',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_1_enhance',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '2',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_2_opportunities',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_2_capitalize',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_2_enhance',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '3',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_3_opportunities',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_3_capitalize',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_3_enhance',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '4',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_4_opportunities',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_4_capitalize',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table4_4_enhance',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+        ],        
+    },
+
+
 
     //Table 5
     {
@@ -268,5 +1297,359 @@ export const components = [
             }
         ]
     },
+    {
+        id: 'table5',
+        type: 'HPTable',
+        classes: 'table',
+        div_classes: "form-group table-responsive",
+        pdf_style: 'paraMarginBottom',
+        tr_arr: [
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        text: '',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Threats',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'Internal and/or external factors that may undermine the team?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Prevent',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'What can prevent these threats in the future?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: 'td3',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'p',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Isolate',
+                                    },
+                                    {
+                                        type: 'p',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'How can threats be isolated?',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: 'tr_example',
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'e.g.',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Competitors hire away most skilled employees',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Survey to understand what motivates employees to stay',
+                    },
+                    {
+                        type: 'TextTD',
+                        pdf_style: 'exampleTD',
+                        text: 'Keep benefits competitive and leverage our positive culture',
+                    },
+
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '1',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_1_threats',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_1_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_1_isolate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '2',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_2_threats',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_2_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_2_isolate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '3',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_3_threats',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_3_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_3_isolate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+            {
+                td_arr: [
+                    {
+                        type: 'TextTD',
+                        pdf_style: '',
+                        text: '4',
+                    },
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_4_threats',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_4_prevent',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table5_4_isolate',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: '',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ],
+            },
+        ],        
+    },
+
 
 ];

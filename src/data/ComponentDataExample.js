@@ -1,0 +1,272 @@
+
+/** 
+ *  1. Input components have to HAVE ID 
+ *  3. ID has to be unique
+ *  4. classes should be strings concated with space
+ *  5. pdf_style should be a string or an array of strings or 'none' which means not print to pdf
+ *  6. HPText -- types in text_arr, 'p', 'span', 'html'. the 'html' type has to have 'html' and 'text' attribute
+ *  7. HPTextarea -- types in body, 'TA_Table' (default), 'TA_Text'
+ *  8. HPTable -- tr_arr, td_arr should not have pdf_style (no use).
+ * 
+ */
+export const components = [
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header1',
+                pdf_style: 'header1',
+                text: 'Analyse your team with an SWOT Analysis',
+            }
+        ]
+    },
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'desc',
+                pdf_style: 'none',
+                text: 'A SWOT (Strengths, Weaknesses, Opportunities and Threats) Analysis is used to identify a team’s internal strengths and weaknesses (as the team’s current state), as well as opportunities and threats external to the team (as the team’s future state).',                        
+            }
+        ]
+    },
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'desc',
+                pdf_style: 'none',
+                text: 'Collecting and analysing information is a critical part of any quality improvement process. However, with so many tools to collect and display information, sometimes teams invest too much energy just gathering information, and fail to take action using the information they gathered. This SWOT Analysis builds on current state activities, and helps move organizations beyond collection and analysis to development and implementation of clear action steps. By focusing on action, this SWOT Analysis can become an integral part of the team problem solving process and can a useful tool to identify and implement potential team improvements.',       
+            },
+        ]
+    },
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'desc',
+                pdf_style: 'none',
+                text: 'Populate the tables below.  This simple worksheet can form the starting-point for developing your team.  A SWOT analysis is best done collectively with team members, but it can also form the basis for your own independent analysis and thinking as a team leader. ',        
+            },
+        ]
+    },
+    // Try Textarea
+    {
+        type: 'HPTextarea',
+        classes: 'form-group',
+        extra: {
+            type: 'HPText',
+            pdf_style: 'smallMarginBottom',
+            text_arr: [
+                {
+                    type: 'p',
+                    classes: '',
+                    pdf_style: '',
+                    text: 'This is a test',
+                }
+            ]
+        },
+        body: {
+            id: 'textarea_1',
+            type: 'TA_Table',
+            classes: 'form-control',
+            pdf_style: 'oneLine',
+            pdf_width: ['*'],
+            default_text: '',
+        }
+    },
+
+    // Try HPList
+    {
+        type: 'HPList',
+        classes: '',
+        div_classes: '',
+        pdf_style: '',
+        tag: 'ul',
+        list: [
+            'What specific tasks are your customers trying to perform?',
+            'What problems are they trying to solve?',
+            'What needs do they have?',
+        ]
+    },
+
+
+    //Table 1
+    {
+        type: 'HPText',
+        pdf_style: 'smallMarginBottom',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(1) Identify the Team Objective'
+            }
+        ]
+    },
+    {
+        id: 'table1',
+        type: 'HPTable',
+        classes: 'table',
+        div_classes: "form-group table-responsive",
+        pdf_style: 'paraMarginBottom',
+        tr_arr: [
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPText',
+                                text_arr: [
+                                    {
+                                        type: 'span',
+                                        classes: 'span_label',
+                                        pdf_style: 'spanLabel',
+                                        text: 'Focal Team: ',        
+                                    },
+                                    {
+                                        type: 'span',
+                                        classes: '',
+                                        pdf_style: '',
+                                        text: 'Describe a team or group that you currently (or recently) worked in.',        
+                                    },                                    
+                                ]
+                        
+                            },
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: '',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        pdf_style: 'blueTD',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table1_focal_team',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: 'oneLine',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ]
+            }, 
+            {
+                classes: 'tr_header',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        pdf_style: 'blueTD',
+                        embeded_arr: [
+                            {
+                                type: 'HPList',
+                                classes: '',
+                                div_classes: '',
+                                pdf_style: '',
+                                tag: 'ul',
+                                list: [
+                                    'What specific tasks are your customers trying to perform?',
+                                    'What problems are they trying to solve?',
+                                    'What needs do they have?',
+                                ]
+                            },
+                        ]
+                    },
+                ],
+            },
+            {
+                classes: '',
+                td_arr: [
+                    {
+                        type: 'EmbededTD',
+                        classes: '',
+                        embeded_arr: [
+                            {
+                                type: 'HPTextarea',
+                                classes: '',
+                                body: {
+                                    id: 'table1_team_objective',
+                                    type: 'TA_Text',
+                                    classes: 'form-control',
+                                    pdf_style: 'oneLine',
+                                    default_text: '',
+                                }
+                            }
+                        ]
+                    },                    
+                ]
+            },
+        ],
+    },
+
+    //Table 2
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(2) Identify the Strengths'
+            }
+        ]
+    },
+
+
+    //Table 3
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(3) Identify the Weaknesses'
+            }
+        ]
+    },
+
+    //Table 4
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(4) Identify the Opportunities'
+            }
+        ]
+    },
+
+    //Table 5
+    {
+        type: 'HPText',
+        text_arr: [
+            {
+                type: 'p',
+                classes: 'header3',
+                pdf_style: 'header3',
+                text: '(5) Identify the Threats'
+            }
+        ]
+    },
+
+];
