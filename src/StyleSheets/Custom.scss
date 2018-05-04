@@ -5,13 +5,28 @@
 
 .header3, .span_label {
     font-weight: 700;
+    //margin-bottom: 0px;
+    
 }
 
 /* HPTable */
 .td3 {
-    width: 30%;
+    width: 31%;
 }
 
+.tr_example {
+	background-color: LightGray;
+	font-style: italic;
+	font-size: 12px;
+}
+
+.hptable {
+	border: 1px solid rgb(221,221,221);
+}
+
+td p {
+	margin-bottom: 0px;
+}
 
 
 /* Buttons and Comment */

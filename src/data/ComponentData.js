@@ -71,7 +71,7 @@ export const components = [
     {
         id: 'table1',
         type: 'HPTable',
-        classes: 'table',
+        classes: 'table hptable',
         div_classes: "form-group table-responsive",
         pdf_style: 'paraMarginBottom',
         tr_arr: [
@@ -184,6 +184,7 @@ export const components = [
     //Table 2
     {
         type: 'HPText',
+        pdf_style: 'smallMarginBottom',
         text_arr: [
             {
                 type: 'p',
@@ -196,9 +197,10 @@ export const components = [
     {
         id: 'table2',
         type: 'HPTable',
-        classes: 'table',
+        classes: 'table hptable',
         div_classes: "form-group table-responsive",
         pdf_style: 'paraMarginBottom',
+        pdf_width: 'table3',
         tr_arr: [
             {
                 classes: 'tr_header',
@@ -213,11 +215,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Strengths',
                                     },
                                     {
@@ -236,11 +239,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Preserve and Protect',
                                     },
                                     {
@@ -259,11 +263,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Prevent',
                                     },
                                     {
@@ -551,6 +556,7 @@ export const components = [
     //Table 3
     {
         type: 'HPText',
+        pdf_style: 'smallMarginBottom',
         text_arr: [
             {
                 type: 'p',
@@ -563,9 +569,10 @@ export const components = [
     {
         id: 'table3',
         type: 'HPTable',
-        classes: 'table',
+        classes: 'table hptable',
         div_classes: "form-group table-responsive",
         pdf_style: 'paraMarginBottom',
+        pdf_width: 'table3',
         tr_arr: [
             {
                 classes: 'tr_header',
@@ -580,11 +587,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Weaknesses',
                                     },
                                     {
@@ -603,11 +611,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Mitigate',
                                     },
                                     {
@@ -626,11 +635,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Overcome',
                                     },
                                     {
@@ -920,6 +930,7 @@ export const components = [
     //Table 4
     {
         type: 'HPText',
+        pdf_style: 'smallMarginBottom',
         text_arr: [
             {
                 type: 'p',
@@ -932,9 +943,10 @@ export const components = [
     {
         id: 'table4',
         type: 'HPTable',
-        classes: 'table',
+        classes: 'table hptable',
         div_classes: "form-group table-responsive",
         pdf_style: 'paraMarginBottom',
+        pdf_width: 'table3',
         tr_arr: [
             {
                 classes: 'tr_header',
@@ -949,11 +961,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Opportunities',
                                     },
                                     {
@@ -972,11 +985,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Capitalize',
                                     },
                                     {
@@ -995,11 +1009,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Enhance',
                                     },
                                     {
@@ -1288,6 +1303,7 @@ export const components = [
     //Table 5
     {
         type: 'HPText',
+        pdf_style: 'smallMarginBottom',
         text_arr: [
             {
                 type: 'p',
@@ -1300,9 +1316,10 @@ export const components = [
     {
         id: 'table5',
         type: 'HPTable',
-        classes: 'table',
+        classes: 'table hptable',
         div_classes: "form-group table-responsive",
         pdf_style: 'paraMarginBottom',
+        pdf_width: 'table3',
         tr_arr: [
             {
                 classes: 'tr_header',
@@ -1317,11 +1334,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Threats',
                                     },
                                     {
@@ -1340,11 +1358,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Prevent',
                                     },
                                     {
@@ -1363,11 +1382,12 @@ export const components = [
                         embeded_arr: [
                             {
                                 type: 'HPText',
+                                pdf_style: 'smallMarginBottom',
                                 text_arr: [
                                     {
                                         type: 'p',
                                         classes: 'span_label',
-                                        pdf_style: 'spanLabel',
+                                        pdf_style: ['spanLabel', 'pLabel'],
                                         text: 'Isolate',
                                     },
                                     {

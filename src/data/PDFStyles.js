@@ -16,11 +16,19 @@ export const pdfstyles = {
     /* HPTable */
     exampleTD: {
         fillColor: '#eeeeee',
+        italics: true,
+        fontSize: 10
     },
-
-
-
-
+    pLabel: {
+	  lineHeight: 0.5,  
+    },
+    /*
+    tdP: {
+	    //lineHeight: 0.7,
+	    marginBottom: -10
+	    //margin: [2,2,2,2]
+    },
+	*/
 
     oneLine: {
         margin: [0, 10, 0, 20]
@@ -31,7 +39,8 @@ export const pdfstyles = {
     paraMarginBottom: {
         marginBottom: 15
     } 
-
-
 };
 
+export const tableWidths = {
+	table3: ['7%', '*', '*', '*'],
+}

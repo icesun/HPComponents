@@ -15,7 +15,7 @@ function nameDatetime(prefix) {
     return prefix + '_' + nowString;
 }
 
-const courseName ='test_course';
+const courseName ='buslead3x_swot';
 
 export default class PDFButton extends React.Component {
     constructor(props) {

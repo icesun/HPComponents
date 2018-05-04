@@ -3,6 +3,7 @@ import React from 'react'
 import HPText from './HPText'
 import HPTextarea from './HPTextarea'
 import HPList from './HPList';
+import { tableWidths } from '../data/PDFStyles'
 
 import { createKey } from './Tools'
 
@@ -25,6 +26,9 @@ export default class HPTable extends React.Component {
         });
 
         output.body = bodyPDF;
+        if(component.pdf_width) {
+	        output.widths = tableWidths[component.pdf_width];
+        }
 
         return {
             style: component.pdf_style,
