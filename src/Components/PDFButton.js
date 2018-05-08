@@ -61,12 +61,20 @@ export default class PDFButton extends React.Component {
 
         docDefinition['content'] = pdfContent;
         docDefinition['styles'] = this.props.pdfstyles;
-
+        
+        
+        var footStyle = {
+	        fontSize: 10,
+	        italics: true,
+	        color: 'gray'
+        };
+		
+		
         docDefinition['footer'] = function(currentPage, pageCount) {
             var columns = [];
             var d = new Date();
-            columns.push(d.toString());
-            columns.push({text: currentPage, alignment: 'right'});
+            columns.push({text: d.toString(), ...footStyle, marginLeft: 5});
+            columns.push({text: currentPage,  ...footStyle, alignment: 'right', marginRight: 5});
 
             return {columns: columns};
         }
@@ -77,12 +85,6 @@ export default class PDFButton extends React.Component {
         pdfMake.createPdf(docDefinition).download(filename);
         this.props.setStateComment('');
     }
-
-
-
-
-
-
 
     render() {
         console.log('PDFButton props', this.props);
