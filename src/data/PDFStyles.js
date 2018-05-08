@@ -39,12 +39,7 @@ export const pdfstyles = {
     paraMarginBottom: {
         marginBottom: 15
     },
-    
-    /* Foot */
-    foot: {
-	    fontSize: 10,
-	    italics: true,
-    }
+   
 };
 
 export const tableWidths = {
