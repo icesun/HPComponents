@@ -40,10 +40,24 @@ export default class HPTable extends React.Component {
         console.log('print tr', component, i, data);
 
         // trPDF is an array of tdPDF
-        var trPDF = component.td_arr.map((x, i) => {
-            return HPTable.printPDF_td(x, i, data);
-
-        });
+        var trPDF = [];
+        for(let i=0; i<component.td_arr.length; i++ ) {
+            //console.log(i, component.td_arr[i]);
+            var tdPDF = this.printPDF_td(component.td_arr[i], i, data);
+            var colspan = 1;
+            /* add colSpan attribute if colspan more than 1 */
+            if(component.td_arr[i].colspan && component.td_arr[i].colspan > 1) {
+                colspan = component.td_arr[i].colspan;
+                tdPDF['colSpan'] = colspan;
+                //console.log('colspan', i, colspan, trPDF[i]);
+            }
+            trPDF.push(tdPDF);
+            /* push empty tdPDF {} if the previous td occupy more than one col */ 
+            for(let j=0; j<colspan-1; j++) {
+                console.log('push empty td');
+                trPDF.push({});
+            }
+        }
 
         return trPDF;
     }
@@ -131,7 +145,7 @@ export default class HPTable extends React.Component {
             break;
         }
 
-        return (<td key={key} className={meta.classes}>{tdContent}</td>);
+        return (<td key={key} className={meta.classes} colSpan={meta.colspan}>{tdContent}</td>);
 
     }
 
